@@ -106,7 +106,7 @@ Dodajanje novega admina (samo za admina): Admin lahko doda drugega admina za upr
 Opis razrednega diagrama
 Razredni diagram prikazuje strukturo aplikacije Gourmet Globe in poudarja ključne razrede, njihove lastnosti, metode ter relacije med njimi. Tukaj so pojasnjene vloge in nameni posameznih razredov ter ključne metode za izvedbo funkcionalnosti.
 
-1. Razred User / Vloga in namen:
+Razred User / Vloga in namen:
 Predstavlja uporabnike aplikacije, ki lahko iščejo, pregledajo in ocenjujejo recepte.
 Ima funkcionalnost iskanja receptov glede na kriterije in možnost vpogleda v podrobnosti recepta.
 Ključne metode:
@@ -114,7 +114,8 @@ searchRecipes(criteria: String): List
 Omogoča uporabnikom iskanje receptov glede na izbrane kriterije (npr. država, sestavine).
 viewRecipe(recipeId: int): Recipe
 Vrne podrobnosti izbranega recepta.
-2. Razred Admin / Vloga in namen:
+
+Razred Admin / Vloga in namen:
 Predstavlja administratorje aplikacije, ki lahko dodajajo, urejajo in brišejo recepte ter dodajajo nove administratorje.
 Ključne metode:
 addRecipe(recipe: Recipe): void
@@ -125,23 +126,27 @@ addAdmin(admin: Admin): void
 Dodaja nove administratorje.
 deleteAdmin(adminId: int): void
 Briše obstoječe administratorje.
-3. Razred Recipe / Vloga in namen:
+
+Razred Recipe / Vloga in namen:
 Predstavlja posamezen recept, ki vsebuje osnovne podatke, kot so ime, opis, sestavine in kategorija.
 Ključne metode:
 rateRecipe(feedback: Feedback): void
 Omogoča ocenjevanje recepta prek povezave s povratnimi informacijami.
 getDetails(): String
 Vrne celotne podrobnosti o receptu, vključno s sestavinami in postopkom.
-4. Razred Category / Vloga in namen:
+
+Razred Category / Vloga in namen:
 Organizira recepte v kategorije (npr. države, vrste jedi) za lažje iskanje in filtriranje.
 Ključne metode:
 filterRecipes(categoryId: int): List<Recipe>
 Vrne vse recepte, ki pripadajo določeni kategoriji.
-5. Razred Feedback / Vloga in namen:
+
+Razred Feedback / Vloga in namen:
 Zabeleži povratne informacije uporabnikov o receptih, vključno z oceno in komentarjem.
 Ključne metode:
 submitFeedback(user: User, recipe: Recipe): void
 Omogoča uporabnikom oddajo ocen in komentarjev za recepte.
+
 Relacije med razredi:
 Relacija User – Feedback:
 Vsak uporabnik lahko odda več povratnih informacij za različne recepte.
@@ -151,6 +156,7 @@ Relacija Recipe – Category:
 Vsak recept pripada eni kategoriji, medtem ko lahko kategorija vsebuje več receptov.
 Relacija Recipe – Feedback:
 Recepti lahko vsebujejo več ocen in komentarjev.
+
 Pomen metod za izvedbo funkcionalnosti:
 Uporabniške metode (npr. searchRecipes, viewRecipe) omogočajo osnovno interakcijo z aplikacijo in so ključne za raziskovanje vsebine.
 Administratorske metode (npr. addRecipe, deleteRecipe) zagotavljajo upravljanje vsebine, kar je bistveno za vzdrževanje baze podatkov receptov.
