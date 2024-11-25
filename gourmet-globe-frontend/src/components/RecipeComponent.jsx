@@ -85,14 +85,14 @@ const RecipeComponent = () => {
             if (id) {
                 updateRecipe(id, recipe).then((response) => {
                     console.log(response.data);
-                    navigator('/recipes');
+                    navigator('/admin-panel/recipes');
                 }).catch(error => {
                     console.error(error);
                 });
             } else {
                 createRecipe(recipe).then((response) => {
                     console.log(response.data);
-                    navigator('/recipes');
+                    navigator('/admin-panel/recipes');
                 }).catch(error => {
                     console.error(error);
                 });

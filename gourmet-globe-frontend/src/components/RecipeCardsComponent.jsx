@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { deleteRecipe, listRecipes } from '../services/RecipeService';
+import { listRecipes } from '../services/RecipeService';
 import { useNavigate } from 'react-router-dom';
 import backgroundImage from '../assets/balkan-cuisine.jpeg';
 
@@ -44,7 +44,7 @@ const countries = [
     'Zambia', 'Zimbabwe'
 ];
 
-const ListRecipeComponent = () => {
+const RecipeCardsComponent = () => {
     const [recipes, setRecipes] = useState([]);
     const [searchTerm, setSearchTerm] = useState('');
     const [selectedCountry, setSelectedCountry] = useState('');
@@ -65,22 +65,6 @@ const ListRecipeComponent = () => {
         });
     }
 
-    function addNewRecipe() {
-        navigator('/admin-panel/add-recipe');
-    }
-
-    function updateRecipe(id) {
-        navigator(`/admin-panel/edit-recipe/${id}`);
-    }
-
-    function removeRecipe(id) {
-        deleteRecipe(id).then(() => {
-            getAllRecipes();
-        }).catch(error => {
-            console.error(error);
-        });
-    }
-
     const filteredRecipes = recipes.filter(recipe =>
         recipe.recipeName.toLowerCase().includes(searchTerm.toLowerCase()) &&
         (selectedCountry === '' || recipe.recipeCountry === selectedCountry)
@@ -91,6 +75,10 @@ const ListRecipeComponent = () => {
     const currentRecipes = filteredRecipes.slice(indexOfFirstRecipe, indexOfLastRecipe);
 
     const paginate = (pageNumber) => setCurrentPage(pageNumber);
+
+    function viewRecipe(id) {
+        navigator(`/recipe/${id}`);
+    }
 
     return (
         <div
@@ -107,7 +95,6 @@ const ListRecipeComponent = () => {
         >
             <div className='container' style={{ backgroundColor: 'rgba(255, 255, 255, 0.8)', padding: '20px', borderRadius: '8px' }}>
                 <h2 className='text-center'>List of Recipes</h2>
-                <button className='btn btn-primary mb-2' onClick={addNewRecipe}>Add Recipe</button>
 
                 {/* Search bar input */}
                 <div className="form-group mb-2">
@@ -134,47 +121,27 @@ const ListRecipeComponent = () => {
                     </select>
                 </div>
 
-                <table className='table table-striped table-bordered'>
-                    <thead>
-                        <tr>
-                            <th>Recipe ID</th>
-                            <th>Recipe Name</th>
-                            <th>Recipe Description</th>
-                            <th>Recipe Country</th>
-                            <th>Recipe Author</th>
-                            <th>Recipe Image</th>
-                            <th>Update</th>
-                            <th>Delete</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {
-                            currentRecipes.map(recipe =>
-                                <tr key={recipe.id}>
-                                    <td>{recipe.id}</td>
-                                    <td>{recipe.recipeName}</td>
-                                    <td>{recipe.recipeDescription}</td>
-                                    <td>{recipe.recipeCountry}</td>
-                                    <td>{recipe.recipeAuthor}</td>
-                                    <td>
-                                        {/* Display recipe image using URL */}
-                                        <img
-                                            src={recipe.recipeImage} // Assuming recipeImage is a URL
-                                            alt={recipe.recipeName}
-                                            style={{ width: '100px', height: 'auto' }} // Set appropriate dimensions
-                                        />
-                                    </td>
-                                    <td>
-                                        <button className='btn btn-info' onClick={() => updateRecipe(recipe.id)}>Update</button>
-                                    </td>
-                                    <td>
-                                        <button className='btn btn-danger' onClick={() => removeRecipe(recipe.id)}>Delete</button>
-                                    </td>
-                                </tr>
-                            )
-                        }
-                    </tbody>
-                </table>
+                {/* Recipe Cards */}
+                <div className="row">
+                    {currentRecipes.map(recipe => (
+                        <div key={recipe.id} className="col-md-4 mb-4">
+                            <div className="card">
+                                <img
+                                    src={recipe.recipeImage} // Assuming recipeImage is a URL
+                                    alt={recipe.recipeName}
+                                    className="card-img-top"
+                                    style={{ height: '200px', objectFit: 'cover' }} // Set appropriate dimensions
+                                />
+                                <div className="card-body">
+                                    <h5 className="card-title">{recipe.recipeName}</h5>
+                                    <p className="card-text">{recipe.recipeCountry}</p>
+                                    <p className="card-text">By {recipe.recipeAuthor}</p>
+                                    <button className="btn btn-primary" onClick={() => viewRecipe(recipe.id)}>View Recipe</button>
+                                </div>
+                            </div>
+                        </div>
+                    ))}
+                </div>
 
                 {/* Pagination component */}
                 <Pagination
@@ -210,4 +177,4 @@ const Pagination = ({ recipesPerPage, totalRecipes, paginate, currentPage }) => 
     );
 }
 
-export default ListRecipeComponent;
+export default RecipeCardsComponent;

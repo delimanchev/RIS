@@ -1,16 +1,22 @@
-import React from 'react'
+import React from 'react';
+import { Link } from 'react-router-dom';
+import '../css/HeaderComponent.css';
 
 const HeaderComponent = () => {
   return (
-    <div>
-        <header>
-            <nav className='navbar navbar-dark bg-dark'>
-            <a className='navbar-brand' href="https://www.thebalkancuisine.com">The Balkan Cuisine</a>
-
-            </nav>
-        </header>
+    <div className="menu text-center">
+      <div className="wrapper">
+        <ul>
+          <li>
+            <Link to="#">Gourmet Globe</Link>
+          </li>
+          <li>
+            <Link to="#">Contact Us</Link>
+          </li>
+        </ul>
+      </div>
     </div>
-  )
-}
+  );
+};
 
-export default HeaderComponent
+export default HeaderComponent;
