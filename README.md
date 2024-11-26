@@ -167,20 +167,22 @@ Ta razredni diagram skupaj z opisanimi metodami ustrezno pokriva funkcionalnost 
 
 Opis funkcionalnosti
 Implementirali smo funkcionalnost interaktivne zemljevida sveta v obliki 3D globusa. Uporabniki lahko kliknejo na določeno državo na globusu in si ogledajo recepte hrane iz te države.
+
 Kako funkcionalnost deluje
-1.	Na strani se prikaže interaktivni globus.
-2.	Uporabnik lahko vrti globus, da poišče željeno državo.
-3.	Ko uporabnik klikne na določeno državo, se samodejno naložijo recepti hrane, specifični za to državo.
-4.	Recepti so prikazani v vizualno privlačnem in preglednem formatu.
+	Na strani se prikaže interaktivni globus.
+	Uporabnik lahko vrti globus, da poišče željeno državo.
+	Ko uporabnik klikne na določeno državo, se samodejno naložijo recepti hrane, specifični za to državo.
+	Recepti so prikazani v vizualno privlačnem in preglednem formatu.
+ 
 Kako preizkusiti funkcionalnost
-1.	Prijavite se v sistem: Da bi uporabili to funkcionalnost, se prijavite z vašim uporabniškim računom.
-2.	Dostop do zemljevida sveta: Kliknite na razdelek Zemljevid sveta v glavnem meniju.
-3.	Interakcija z globusom:
-o	Kliknite in povlecite globus, da ga zavrtite.
-o	Kliknite na državo, ki vas zanima.
-4.	Ogled receptov: Po kliku se samodejno naloži seznam receptov hrane iz izbrane države.
-Dodatne informacije
-•	Če v bazi podatkov ni receptov za določeno državo, bo uporabnik prejel obvestilo s sporočilom, da recepti trenutno niso na voljo.
-•	Za najboljšo izkušnjo priporočamo uporabo sodobnih brskalnikov (Chrome, Firefox, Edge).
+   Prijavite se v sistem: Da bi uporabili to funkcionalnost, se prijavite z vašim uporabniškim računom.
+	Dostop do zemljevida sveta: Kliknite na razdelek Zemljevid sveta v glavnem meniju.
+   Interakcija z globusom:
+   Kliknite in povlecite globus, da ga zavrtite.
+   Kliknite na državo, ki vas zanima.
+	Ogled receptov: Po kliku se samodejno naloži seznam receptov hrane iz izbrane države.
+
+Če v bazi podatkov ni receptov za določeno državo, bo uporabnik prejel obvestilo s sporočilom, da recepti trenutno niso na voljo.
+Za najboljšo izkušnjo priporočamo uporabo sodobnih brskalnikov (Chrome, Firefox, Edge).
 
 
