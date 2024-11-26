@@ -162,3 +162,25 @@ Uporabniške metode (npr. searchRecipes, viewRecipe) omogočajo osnovno interakc
 Administratorske metode (npr. addRecipe, deleteRecipe) zagotavljajo upravljanje vsebine, kar je bistveno za vzdrževanje baze podatkov receptov.
 Metode za povratne informacije (npr. submitFeedback) omogočajo vključitev uporabniških mnenj in so ključne za gradnjo skupnosti in izboljšanje receptov.
 Ta razredni diagram skupaj z opisanimi metodami ustrezno pokriva funkcionalnost aplikacije Gourmet Globe in prikazuje razmerja med glavnimi komponentami.
+
+![image](https://github.com/user-attachments/assets/90bc278e-d515-48bb-8e01-1af521f85009)
+
+Opis funkcionalnosti
+Implementirali smo funkcionalnost interaktivne zemljevida sveta v obliki 3D globusa. Uporabniki lahko kliknejo na določeno državo na globusu in si ogledajo recepte hrane iz te države.
+Kako funkcionalnost deluje
+1.	Na strani se prikaže interaktivni globus.
+2.	Uporabnik lahko vrti globus, da poišče željeno državo.
+3.	Ko uporabnik klikne na določeno državo, se samodejno naložijo recepti hrane, specifični za to državo.
+4.	Recepti so prikazani v vizualno privlačnem in preglednem formatu.
+Kako preizkusiti funkcionalnost
+1.	Prijavite se v sistem: Da bi uporabili to funkcionalnost, se prijavite z vašim uporabniškim računom.
+2.	Dostop do zemljevida sveta: Kliknite na razdelek Zemljevid sveta v glavnem meniju.
+3.	Interakcija z globusom:
+o	Kliknite in povlecite globus, da ga zavrtite.
+o	Kliknite na državo, ki vas zanima.
+4.	Ogled receptov: Po kliku se samodejno naloži seznam receptov hrane iz izbrane države.
+Dodatne informacije
+•	Če v bazi podatkov ni receptov za določeno državo, bo uporabnik prejel obvestilo s sporočilom, da recepti trenutno niso na voljo.
+•	Za najboljšo izkušnjo priporočamo uporabo sodobnih brskalnikov (Chrome, Firefox, Edge).
+
+
