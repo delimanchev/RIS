@@ -16,11 +16,10 @@ import java.util.stream.Collectors;
 @AllArgsConstructor
 public class RecipeServiceImpl implements RecipeService {
 
-    private RecipeRepository recipeRepository;
+    private final RecipeRepository recipeRepository;
 
     @Override
     public RecipeDto createRecipe(RecipeDto recipeDto) {
-
         Recipe recipe = RecipeMapper.mapToRecipe(recipeDto);
         Recipe savedRecipe = recipeRepository.save(recipe);
 
@@ -39,7 +38,8 @@ public class RecipeServiceImpl implements RecipeService {
     @Override
     public List<RecipeDto> getAllRecipes() {
         List<Recipe> recipes = recipeRepository.findAll();
-        return recipes.stream().map((recipe) -> RecipeMapper.mapToRecipeDto(recipe))
+        return recipes.stream()
+                .map(RecipeMapper::mapToRecipeDto)
                 .collect(Collectors.toList());
     }
 
@@ -63,10 +63,19 @@ public class RecipeServiceImpl implements RecipeService {
         Recipe recipe = recipeRepository.findById(recipeId).orElseThrow(
                 () -> new ResourceNotFoundException("Recipe not found with ID: " + recipeId)
         );
-    
+
         System.out.println("Deleting recipe: " + recipe.getRecipeName());
-        
+
         recipeRepository.deleteById(recipeId);
     }
+
+    @Override
+    public List<RecipeDto> getRecipesByCountry(String country) {
+        System.out.println("Fetching recipes for country: " + country);
+        List<Recipe> recipes = recipeRepository.findByRecipeCountry(country);
+        return recipes.stream()
+                      .map(RecipeMapper::mapToRecipeDto)
+                      .collect(Collectors.toList());
+    }    
     
 }

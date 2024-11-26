@@ -14,4 +14,6 @@ public interface RecipeService {
     RecipeDto updateRecipe(Long recipeId, RecipeDto updatedRecipe);
 
     void deleteRecipe(Long recipeId);
+
+    List<RecipeDto> getRecipesByCountry(String country);
 }

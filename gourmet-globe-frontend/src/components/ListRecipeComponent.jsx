@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { deleteRecipe, listRecipes } from '../services/RecipeService';
 import { useNavigate } from 'react-router-dom';
 import backgroundImage from '../assets/balkan-cuisine.jpeg';
@@ -27,7 +27,7 @@ const countries = [
     'Mauritius', 'Mexico', 'Micronesia', 'Moldova', 'Monaco', 
     'Mongolia', 'Montenegro', 'Morocco', 'Mozambique', 'Myanmar', 
     'Namibia', 'Nauru', 'Nepal', 'Netherlands', 'New Zealand', 
-    'Nicaragua', 'Niger', 'Nigeria', 'North Macedonia', 'Norway', 
+    'Nicaragua', 'Niger', 'Nigeria', 'Macedonia', 'Norway', 
     'Oman', 'Pakistan', 'Palau', 'Palestine', 'Panama', 'Papua New Guinea', 
     'Paraguay', 'Peru', 'Philippines', 'Poland', 'Portugal', 'Qatar', 
     'Romania', 'Russia', 'Rwanda', 'Saint Kitts and Nevis', 'Saint Lucia', 

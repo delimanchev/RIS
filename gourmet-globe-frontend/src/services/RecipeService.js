@@ -11,3 +11,4 @@ export const getRecipe = (recipeId) => axios.get(REST_API_BASE_URL + '/' + recip
 export const updateRecipe = (recipeId, recipe) => axios.put(REST_API_BASE_URL + '/' + recipeId, recipe);
 
 export const deleteRecipe = (recipeId) => axios.delete(REST_API_BASE_URL + '/' + recipeId);
+
