@@ -41,7 +41,7 @@ const GlobeComponent = () => {
             <Globe
                 globeImageUrl="//unpkg.com/three-globe/example/img/earth-blue-marble.jpg"
                 polygonsData={countries}
-                polygonStrokeColor={() => "#111"}
+                polygonStrokeColor={() => "whitesmoke"}
                 polygonLabel={({ properties: d }) => `<b>${d.name}</b>`}
                 onPolygonClick={handleCountryClick}
                 polygonCapColor={({ properties: d }) =>

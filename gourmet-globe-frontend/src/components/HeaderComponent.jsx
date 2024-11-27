@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import '../css/HeaderComponent.css';
+import '../css/HeaderComponent.css'; // Preverite, da ima ustrezno stilizacijo
+import { FaGlobe } from 'react-icons/fa'; // Font Awesome ikona
 
 const HeaderComponent = () => {
   return (
@@ -8,10 +9,15 @@ const HeaderComponent = () => {
       <div className="wrapper">
         <ul>
           <li>
-            <Link to="#">Gourmet Globe</Link>
+            <Link to="/recipes">All Recipes</Link>
           </li>
           <li>
-            <Link to="#">Contact Us</Link>
+            <Link to="/">
+            <FaGlobe className="globe-icon" /> Gourmet Globe <FaGlobe className="globe-icon" />
+            </Link>
+          </li>
+          <li>
+            <Link to="/contact">Contact Us</Link>
           </li>
         </ul>
       </div>

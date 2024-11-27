@@ -1,25 +1,22 @@
-// RecipeDetailComponent.jsx
 import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom'; // To get the recipe ID from the URL
-import { getRecipe } from '../services/RecipeService'; // Import the getRecipe function
+import { useParams } from 'react-router-dom'; 
+import { getRecipe } from '../services/RecipeService'; 
 import '../css/RecipeDetailComponent.css';
 
 const RecipeDetailComponent = () => {
-    const { id } = useParams();  // Get the recipe ID from the URL
+    const { id } = useParams(); 
     const [recipe, setRecipe] = useState(null);
 
     useEffect(() => {
-        // Fetch the recipe details by its ID using the getRecipe function
         getRecipe(id)
             .then((response) => {
-                setRecipe(response.data); // Set the recipe data when fetched
+                setRecipe(response.data); 
             })
             .catch((error) => {
-                console.error('Error fetching recipe details:', error); // Handle error if any
+                console.error('Error fetching recipe details:', error);
             });
     }, [id]);
 
-    // If the recipe is still loading, show a loading message
     if (!recipe) {
         return <div>Loading...</div>;
     }
@@ -30,8 +27,8 @@ const RecipeDetailComponent = () => {
             <div className="recipe-detail">
                 <img src={recipe.recipeImage} alt={recipe.recipeName} style={{ width: '300px', height: 'auto' }} />
                 <p><strong>Country:</strong> {recipe.recipeCountry}</p>
-                <p><strong>Author:</strong> {recipe.recipeAuthor}</p>
                 <p><strong>Description:</strong> {recipe.recipeDescription}</p>
+                <p><strong>Author:</strong> {recipe.recipeAuthor}</p>
             </div>
         </div>
     );

@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { listRecipes } from '../services/RecipeService';
 import { useNavigate } from 'react-router-dom';
 import backgroundImage from '../assets/balkan-cuisine.jpeg';
+import '../css/RecipeCardsComponent.css';
 
 const countries = [
     'Afghanistan', 'Albania', 'Algeria', 'Andorra', 'Angola', 'Antigua and Barbuda',
@@ -93,8 +94,11 @@ const RecipeCardsComponent = () => {
                 alignItems: 'center'
             }}
         >
+                <br />
             <div className='container' style={{ backgroundColor: 'rgba(255, 255, 255, 0.8)', padding: '20px', borderRadius: '8px' }}>
-                <h2 className='text-center'>List of Recipes</h2>
+                <h2 className='text-center'>List of Recipes</h2> 
+
+                <br />
 
                 {/* Search bar input */}
                 <div className="form-group mb-2">
@@ -120,6 +124,9 @@ const RecipeCardsComponent = () => {
                         ))}
                     </select>
                 </div>
+
+                <br />
+
 
                 {/* Recipe Cards */}
                 <div className="row">

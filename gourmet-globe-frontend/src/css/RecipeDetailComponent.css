@@ -2,6 +2,7 @@
     padding: 20px;
     max-width: 900px;
     margin: 0 auto;
+    margin-top: 30px;
     background-color: #f8f9fa;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -42,7 +43,7 @@
   
   .recipe-detail .back-button {
     display: inline-block;
-    background-color: #007bff;
+    background-color: firebrick;
     color: white;
     padding: 10px 20px;
     font-size: 1rem;
@@ -54,6 +55,6 @@
   }
   
   .recipe-detail .back-button:hover {
-    background-color: #0056b3;
+    background-color: firebrick;
   }
   

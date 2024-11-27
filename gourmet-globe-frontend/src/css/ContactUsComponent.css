@@ -1,0 +1,56 @@
+.contact-us-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;  
+  min-height: 100vh;       
+  background-color: #f9f9f9;
+  padding: 20px;
+}
+
+.card {
+  padding: 20px;
+  max-width: 800px;
+  width: 100%;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+h2 {
+  text-align: center;
+  color: firebrick;
+}
+
+.recipe-details {
+  margin-top: 10px;
+}
+
+.recipe-details p {
+  font-size: 1.1rem;
+  color: #555;
+}
+
+.recipe-details img {
+  margin-top: 10px;
+  max-width: 100%;
+  border-radius: 5px;
+}
+
+.contact-info {
+  margin-top: 30px;
+  background-color: firebrick;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.contact-info p {
+  font-size: 1.2rem;
+  color: #fff;
+  margin: 5px 0;
+}
+
+p {
+  color: #555;
+  font-size: 1.1rem;
+}
