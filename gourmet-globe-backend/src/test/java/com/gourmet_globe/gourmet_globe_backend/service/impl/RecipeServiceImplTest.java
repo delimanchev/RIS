@@ -110,5 +110,47 @@ class RecipeServiceImplTest {
         assertNotNull(result);
         assertTrue(result.isEmpty());
     }
+    
+    @Test
+void testGetAllRecipes() {
+    Recipe recipe1 = new Recipe(
+            1L,
+            "Ajvar",
+            "Delicious Balkan spread made from roasted red peppers.",
+            "John Doe",
+            "Serbia",
+            "https://natureta.si/wp-content/uploads/2022/01/polpekoci-ajvar-e1658756496692.png"
+    );
+    Recipe recipe2 = new Recipe(
+            2L,
+            "Gibanica",
+            "Traditional Serbian pastry made with cheese and phyllo dough.",
+            "Jane Doe",
+            "Serbia",
+            "https://natureta.si/wp-content/uploads/2022/01/polpekoci-ajvar-e1658756496692.png"
+    );
+
+    List<Recipe> mockRecipes = Arrays.asList(recipe1, recipe2);
+
+    when(recipeRepository.findAll()).thenReturn(mockRecipes);
+
+    List<RecipeDto> result = recipeService.getAllRecipes();
+
+    assertEquals(2, result.size());
+    assertEquals("Ajvar", result.get(0).getRecipeName());
+    assertEquals("Gibanica", result.get(1).getRecipeName());
+    assertEquals("John Doe", result.get(0).getRecipeAuthor());
+    assertEquals("Jane Doe", result.get(1).getRecipeAuthor());
+}
+@Test
+void testDeleteRecipe_NotFound() {
+    when(recipeRepository.findById(1L)).thenReturn(java.util.Optional.empty());
+
+    ResourceNotFoundException exception = assertThrows(ResourceNotFoundException.class, () -> {
+        recipeService.deleteRecipe(1L);
+    });
+
+    assertEquals("Recipe not found with ID: 1", exception.getMessage());
+}
 
 }
