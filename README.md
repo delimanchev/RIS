@@ -2,6 +2,18 @@
 
 Dobrodošli v Gourmet Globe – vašem potnem listu do okusov z vsega sveta! Ta aplikacija je zasnovana tako, da omogoča dostop do svetovne kulinarike, prinaša raznolike in okusne recepte neposredno v vašo kuhinjo.
 
+🧪 Testiranje
+
+Za zagotovitev stabilnosti in kakovosti kode smo izvedli obsežno testiranje našega sistema. V repozitoriju je bila ustvarjena nova mapa `testiranje`, ki vsebuje:
+
+Enotni testi: Testi, napisani z uporabo JUnit 5 in Mock, ki preverjajo delovanje ključnih funkcionalnosti sistema, vključno z metodami za pridobivanje, dodajanje, iskanje in brisanje receptov. 
+
+Poročilo o testiranju: Dokument v formatu Markdown z vsemi podrobnostmi o izvedenih testih, vključno z opisom, odgovornostmi članov ekipe in analizo uspešnosti testov. Poročilo o testiranju lahko najdete v mapi `testiranje` v datoteki `porocilo_testiranja.md`. 
+
+Testi vključujejo: 
+
+Preverjanje, ali so podatki o receptih pravilno pridobljeni iz baze podatkov, testiranje napak pri iskanju in brisanju receptov, preverjanje filtrov in iskanja receptov glede na državo. Za podrobnosti o izvedenih testih in napakah, ki smo jih odkrili ter popravkih, si oglejte `porocilo_testiranja.md`...   
+
 🚀 Funkcije
 
 🌎 Raziskovanje receptov: Odkrijte jedi iz različnih držav in kultur, od ulične hrane do gurmanskih jedi.
