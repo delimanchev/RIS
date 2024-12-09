@@ -11,7 +11,16 @@ const GlobeComponent = () => {
     useEffect(() => {
         fetch("https://raw.githubusercontent.com/holtzy/D3-graph-gallery/master/DATA/world.geojson")
             .then((res) => res.json())
-            .then((data) => setCountries(data.features));
+            .then((data) => {
+                // Modify the data to merge Serbia and Kosovo into "Republic of Serbia"
+                const modifiedCountries = data.features.map((feature) => {
+                    if (feature.properties.name === "Kosovo") {
+                        feature.properties.name = "Republic of Serbia";
+                    }
+                    return feature;
+                });
+                setCountries(modifiedCountries);
+            });
     }, []);
 
     const handleCountryClick = (country) => {
@@ -74,7 +83,6 @@ const GlobeComponent = () => {
                                     {recipe.description ? `: ${recipe.description}` : ""}
                                 </li>
                             ))}
-                            
                         </ul>
                     ) : (
                         <p>No recipes found for {selectedCountry}.</p>
