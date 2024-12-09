@@ -26,6 +26,10 @@ public class Recipe {
     private String recipeAuthor;
     @Column(name = "recipe_country")
     private String recipeCountry;
+    @Column(name = "recipe_ingredients")
+    private String recipeIngredients;
+    @Column(name = "recipe_persons")
+    private Integer recipePersons;
     @Column(name = "recipe_image")
     private String recipeImage;
 }

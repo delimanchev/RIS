@@ -36,6 +36,8 @@ class RecipeServiceImplTest {
                 "Delicious Balkan spread made from roasted red peppers.",
                 "John Doe",
                 "Serbia",
+                "paprika",
+                2,
                 "https://natureta.si/wp-content/uploads/2022/01/polpekoci-ajvar-e1658756496692.png"
         );
 
@@ -45,6 +47,8 @@ class RecipeServiceImplTest {
                 "Delicious Balkan spread made from roasted red peppers.",
                 "John Doe",
                 "Serbia",
+                "paprika",
+                2,
                 "https://natureta.si/wp-content/uploads/2022/01/polpekoci-ajvar-e1658756496692.png"
         );
 
@@ -76,6 +80,8 @@ class RecipeServiceImplTest {
                 "Delicious Balkan spread made from roasted red peppers.",
                 "John Doe",
                 "Serbia",
+                "paprika",
+                2,
                 "https://natureta.si/wp-content/uploads/2022/01/polpekoci-ajvar-e1658756496692.png"
         );
         Recipe recipe2 = new Recipe(
@@ -84,6 +90,8 @@ class RecipeServiceImplTest {
                 "Traditional Serbian pastry made with cheese and phyllo dough.",
                 "Jane Doe",
                 "Serbia",
+                "paprika",
+                2,
                 "https://natureta.si/wp-content/uploads/2022/01/polpekoci-ajvar-e1658756496692.png"
         );
 
@@ -117,6 +125,8 @@ void testGetAllRecipes() {
             "Delicious Balkan spread made from roasted red peppers.",
             "John Doe",
             "Serbia",
+            "paprika",
+            2,
             "https://natureta.si/wp-content/uploads/2022/01/polpekoci-ajvar-e1658756496692.png"
     );
     Recipe recipe2 = new Recipe(
@@ -125,6 +135,8 @@ void testGetAllRecipes() {
             "Traditional Serbian pastry made with cheese and phyllo dough.",
             "Jane Doe",
             "Serbia",
+            "paprika",
+            2,
             "https://natureta.si/wp-content/uploads/2022/01/polpekoci-ajvar-e1658756496692.png"
     );
 

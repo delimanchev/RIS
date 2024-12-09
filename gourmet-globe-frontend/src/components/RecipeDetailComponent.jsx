@@ -28,6 +28,8 @@ const RecipeDetailComponent = () => {
                 <img src={recipe.recipeImage} alt={recipe.recipeName} style={{ width: '300px', height: 'auto' }} />
                 <p><strong>Country:</strong> {recipe.recipeCountry}</p>
                 <p><strong>Description:</strong> {recipe.recipeDescription}</p>
+                <p><strong>Ingredients:</strong> {recipe.recipeIngredients}</p>
+                <p><strong>Persons:</strong> {recipe.recipePersons}</p>
                 <p><strong>Author:</strong> {recipe.recipeAuthor}</p>
             </div>
         </div>

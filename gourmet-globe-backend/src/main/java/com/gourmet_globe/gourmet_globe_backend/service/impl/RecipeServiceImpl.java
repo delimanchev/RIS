@@ -52,6 +52,8 @@ public class RecipeServiceImpl implements RecipeService {
         recipe.setRecipeName(updatedRecipe.getRecipeName());
         recipe.setRecipeDescription(updatedRecipe.getRecipeDescription());
         recipe.setRecipeAuthor(updatedRecipe.getRecipeAuthor());
+        recipe.setRecipeIngredients(updatedRecipe.getRecipeIngredients());
+        recipe.setRecipePersons(updatedRecipe.getRecipePersons());
         recipe.setRecipeImage(updatedRecipe.getRecipeImage());
 
         Recipe updatedRecipeObj = recipeRepository.save(recipe);

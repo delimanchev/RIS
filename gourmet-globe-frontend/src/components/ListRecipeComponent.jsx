@@ -142,6 +142,8 @@ const ListRecipeComponent = () => {
                             <th>Recipe Description</th>
                             <th>Recipe Country</th>
                             <th>Recipe Author</th>
+                            <th>Recipe Ingredients</th>
+                            <th>Recipe Persons</th>
                             <th>Recipe Image</th>
                             <th>Update</th>
                             <th>Delete</th>
@@ -156,6 +158,8 @@ const ListRecipeComponent = () => {
                                     <td>{recipe.recipeDescription}</td>
                                     <td>{recipe.recipeCountry}</td>
                                     <td>{recipe.recipeAuthor}</td>
+                                    <td>{recipe.recipeIngredients}</td>
+                                    <td>{recipe.recipePersons}</td>
                                     <td>
                                         {/* Display recipe image using URL */}
                                         <img

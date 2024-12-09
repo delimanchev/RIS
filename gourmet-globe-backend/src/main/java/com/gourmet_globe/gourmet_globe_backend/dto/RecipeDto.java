@@ -15,5 +15,7 @@ public class RecipeDto {
     private String recipeDescription;
     private String recipeAuthor;
     private String recipeCountry;
+    private String recipeIngredients;
+    private Integer recipePersons;
     private String recipeImage;
 }

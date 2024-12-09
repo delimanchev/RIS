@@ -6,6 +6,8 @@ const RecipeComponent = () => {
     const [recipeName, setRecipeName] = useState('');
     const [recipeDescription, setRecipeDescription] = useState('');
     const [recipeAuthor, setRecipeAuthor] = useState('');
+    const [recipeIngredients, setRecipeIngredients] = useState('');
+    const [recipePersons, setRecipePersons] = useState('');
     const [recipeImage, setRecipeImage] = useState('');
     const [recipeCountry, setRecipeCountry] = useState('');
     
@@ -13,6 +15,8 @@ const RecipeComponent = () => {
         recipeName: '',
         recipeDescription: '',
         recipeAuthor: '',
+        recipeIngredients: '',
+        recipePersons: '',
         recipeImage: '',
         recipeCountry: ''
     });
@@ -67,6 +71,8 @@ const RecipeComponent = () => {
                 setRecipeName(response.data.recipeName);
                 setRecipeDescription(response.data.recipeDescription);
                 setRecipeAuthor(response.data.recipeAuthor);
+                setRecipeIngredients(response.data.recipeIngredients);
+                setRecipePersons(response.data.recipePersons);
                 setRecipeImage(response.data.recipeImage);
                 setRecipeCountry(response.data.recipeCountry);
             }).catch(error => {
@@ -79,7 +85,7 @@ const RecipeComponent = () => {
         e.preventDefault();
 
         if (validateForm()) {
-            const recipe = { recipeName, recipeDescription, recipeAuthor, recipeImage, recipeCountry };
+            const recipe = { recipeName, recipeDescription, recipeAuthor, recipeIngredients, recipePersons, recipeImage, recipeCountry };
             console.log(recipe);
 
             if (id) {
@@ -140,6 +146,20 @@ const RecipeComponent = () => {
             valid = false;
         }
 
+        if (recipeIngredients) {
+            errorsCopy.recipeIngredients = '';
+        } else {
+            errorsCopy.recipeIngredients = 'Recipe Ingredients are required';
+            valid = false;
+        }
+
+        if (recipePersons) {
+            errorsCopy.recipePersons = '';
+        } else {
+            errorsCopy.recipePersons = 'Recipe Persons are required';
+            valid = false;
+        }
+
         setErrors(errorsCopy);
         return valid;
     }
@@ -156,6 +176,7 @@ const RecipeComponent = () => {
                     {pageTitle()}
                     <div className='card-body'>
                         <form>
+                            {/* Recipe Name */}
                             <div className='form-group mb-2'>
                                 <label className='form-label'>Recipe Name:</label>
                                 <input
@@ -168,7 +189,8 @@ const RecipeComponent = () => {
                                 />
                                 {errors.recipeName && <div className='invalid-feedback'>{errors.recipeName}</div>}
                             </div>
-
+    
+                            {/* Recipe Description */}
                             <div className='form-group mb-2'>
                                 <label className='form-label'>Recipe Description:</label>
                                 <input
@@ -181,7 +203,8 @@ const RecipeComponent = () => {
                                 />
                                 {errors.recipeDescription && <div className='invalid-feedback'>{errors.recipeDescription}</div>}
                             </div>
-
+    
+                            {/* Recipe Country */}
                             <div className='form-group mb-2'>
                                 <label className='form-label'>Recipe Country:</label>
                                 <select
@@ -197,7 +220,8 @@ const RecipeComponent = () => {
                                 </select>
                                 {errors.recipeCountry && <div className='invalid-feedback'>{errors.recipeCountry}</div>}
                             </div>
-
+    
+                            {/* Recipe Author */}
                             <div className='form-group mb-2'>
                                 <label className='form-label'>Recipe Author:</label>
                                 <input
@@ -210,7 +234,35 @@ const RecipeComponent = () => {
                                 />
                                 {errors.recipeAuthor && <div className='invalid-feedback'>{errors.recipeAuthor}</div>}
                             </div>
-
+    
+                            {/* Recipe Ingredients */}
+                            <div className='form-group mb-2'>
+                                <label className='form-label'>Recipe Ingredients:</label>
+                                <textarea
+                                    placeholder='Enter Recipe Ingredients'
+                                    name='recipeIngredients'
+                                    value={recipeIngredients}
+                                    className={`form-control ${errors.recipeIngredients ? 'is-invalid' : ''}`}
+                                    onChange={(e) => setRecipeIngredients(e.target.value)}
+                                ></textarea>
+                                {errors.recipeIngredients && <div className='invalid-feedback'>{errors.recipeIngredients}</div>}
+                            </div>
+    
+                            {/* Number of Persons */}
+                            <div className='form-group mb-2'>
+                                <label className='form-label'>Number of Persons:</label>
+                                <input
+                                    type='number'
+                                    placeholder='Enter Number of Persons'
+                                    name='recipePersons'
+                                    value={recipePersons}
+                                    className={`form-control ${errors.recipePersons ? 'is-invalid' : ''}`}
+                                    onChange={(e) => setRecipePersons(e.target.value)}
+                                />
+                                {errors.recipePersons && <div className='invalid-feedback'>{errors.recipePersons}</div>}
+                            </div>
+    
+                            {/* Recipe Image URL */}
                             <div className='form-group mb-2'>
                                 <label className='form-label'>Recipe Image URL:</label>
                                 <input
@@ -223,20 +275,22 @@ const RecipeComponent = () => {
                                 />
                                 {errors.recipeImage && <div className='invalid-feedback'>{errors.recipeImage}</div>}
                             </div>
-
+    
+                            {/* Display Recipe Image */}
                             {recipeImage && (
                                 <div className='mb-2'>
                                     <img src={recipeImage} alt='Recipe' style={{ width: '100%', height: 'auto', marginTop: '10px' }} />
                                 </div>
                             )}
-
+    
+                            {/* Submit Button */}
                             <button className='btn btn-success' onClick={saveOrUpdateRecipe}>Submit</button>
                         </form>
                     </div>
                 </div>
             </div>
         </div>
-    );
+    );    
 };
 
 export default RecipeComponent;
