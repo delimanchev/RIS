@@ -79,5 +79,43 @@ public class RecipeServiceImpl implements RecipeService {
                       .map(RecipeMapper::mapToRecipeDto)
                       .collect(Collectors.toList());
     }    
+    public RecipeDto adjustRecipeForServings(Long recipeId, int newServings) {
+        Recipe recipe = recipeRepository.findById(recipeId)
+                .orElseThrow(() -> new ResourceNotFoundException("Recipe not found with ID: " + recipeId));
+    
+        int originalServings = recipe.getRecipePersons();
+        if (newServings <= 0) {
+            throw new IllegalArgumentException("Servings must be greater than 0");
+        }
+    
+        String[] ingredients = recipe.getRecipeIngredients().split(", ");
+        StringBuilder adjustedIngredients = new StringBuilder();
+    
+        for (String ingredient : ingredients) {
+            String[] parts = ingredient.split(":");
+            String ingredientName = parts[0];
+            int originalQuantity = Integer.parseInt(parts[1]);
+            int adjustedQuantity = originalQuantity * newServings / originalServings;  // Adjust the quantity based on servings
+            adjustedIngredients.append(ingredientName).append(":").append(adjustedQuantity).append(", ");
+        }
+    
+        // Remove the last comma and space
+        adjustedIngredients.setLength(adjustedIngredients.length() - 2);
+    
+        recipe.setRecipeIngredients(adjustedIngredients.toString());
+        recipe.setRecipePersons(newServings);
+    
+        return new RecipeDto(
+                recipe.getId(),
+                recipe.getRecipeName(),
+                recipe.getRecipeDescription(),
+                recipe.getRecipeAuthor(),
+                recipe.getRecipeCountry(),
+                recipe.getRecipeIngredients(),
+                recipe.getRecipePersons(),
+                recipe.getRecipeImage()
+        );
+    }
+    
     
 }
