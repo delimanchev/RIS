@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { createRecipe, getRecipe, updateRecipe } from '../services/RecipeService';
 import { useNavigate, useParams } from 'react-router-dom';
 
@@ -10,6 +10,10 @@ const RecipeComponent = () => {
     const [recipePersons, setRecipePersons] = useState('');
     const [recipeImage, setRecipeImage] = useState('');
     const [recipeCountry, setRecipeCountry] = useState('');
+    const [carbohydrates, setCarbohydrates] = useState('');
+    const [proteins, setProteins] = useState('');
+    const [fats, setFats] = useState('');
+    const [calories, setCalories] = useState('');
     
     const [errors, setErrors] = useState({
         recipeName: '',
@@ -18,7 +22,11 @@ const RecipeComponent = () => {
         recipeIngredients: '',
         recipePersons: '',
         recipeImage: '',
-        recipeCountry: ''
+        recipeCountry: '',
+        carbohydrates: '',
+        proteins: '',
+        fats: '',
+        calories: ''
     });
 
     const countries = [
@@ -68,13 +76,18 @@ const RecipeComponent = () => {
     useEffect(() => {
         if (id) {
             getRecipe(id).then((response) => {
-                setRecipeName(response.data.recipeName);
-                setRecipeDescription(response.data.recipeDescription);
-                setRecipeAuthor(response.data.recipeAuthor);
-                setRecipeIngredients(response.data.recipeIngredients);
-                setRecipePersons(response.data.recipePersons);
-                setRecipeImage(response.data.recipeImage);
-                setRecipeCountry(response.data.recipeCountry);
+                const data = response.data;
+                setRecipeName(data.recipeName);
+                setRecipeDescription(data.recipeDescription);
+                setRecipeAuthor(data.recipeAuthor);
+                setRecipeIngredients(data.recipeIngredients);
+                setRecipePersons(data.recipePersons);
+                setRecipeImage(data.recipeImage);
+                setRecipeCountry(data.recipeCountry);
+                setCarbohydrates(data.carbohydrates || '');
+                setProteins(data.proteins || '');
+                setFats(data.fats || '');
+                setFats(data.calories || '');
             }).catch(error => {
                 console.error(error);
             });
@@ -85,19 +98,28 @@ const RecipeComponent = () => {
         e.preventDefault();
 
         if (validateForm()) {
-            const recipe = { recipeName, recipeDescription, recipeAuthor, recipeIngredients, recipePersons, recipeImage, recipeCountry };
-            console.log(recipe);
+            const recipe = {
+                recipeName,
+                recipeDescription,
+                recipeAuthor,
+                recipeIngredients,
+                recipePersons,
+                recipeImage,
+                recipeCountry,
+                carbohydrates,
+                proteins,
+                fats,
+                calories
+            };
 
             if (id) {
-                updateRecipe(id, recipe).then((response) => {
-                    console.log(response.data);
+                updateRecipe(id, recipe).then(() => {
                     navigator('/admin-panel/recipes');
                 }).catch(error => {
                     console.error(error);
                 });
             } else {
-                createRecipe(recipe).then((response) => {
-                    console.log(response.data);
+                createRecipe(recipe).then(() => {
                     navigator('/admin-panel/recipes');
                 }).catch(error => {
                     console.error(error);
@@ -160,6 +182,34 @@ const RecipeComponent = () => {
             valid = false;
         }
 
+        if (carbohydrates.trim() && !isNaN(carbohydrates)) {
+            errorsCopy.carbohydrates = '';
+        } else {
+            errorsCopy.carbohydrates = 'Valid Carbohydrates value is required';
+            valid = false;
+        }
+
+        if (proteins.trim() && !isNaN(proteins)) {
+            errorsCopy.proteins = '';
+        } else {
+            errorsCopy.proteins = 'Valid Proteins value is required';
+            valid = false;
+        }
+
+        if (fats.trim() && !isNaN(fats)) {
+            errorsCopy.fats = '';
+        } else {
+            errorsCopy.fats = 'Valid Fats value is required';
+            valid = false;
+        }
+
+        if (calories.trim() && !isNaN(calories)) {
+            errorsCopy.calories = '';
+        } else {
+            errorsCopy.fats = 'Valid calories value is required';
+            valid = false;
+        }
+
         setErrors(errorsCopy);
         return valid;
     }
@@ -169,13 +219,13 @@ const RecipeComponent = () => {
     }
 
     return (
-        <div className='container'>
-            <br /><br />
-            <div className='row'>
-                <div className='card col-md-6 offset-md-3 offset-md-3'>
-                    {pageTitle()}
-                    <div className='card-body'>
-                        <form>
+    <div className='container'>
+    <br /><br />
+    <div className='row'>
+        <div className='card col-md-6 offset-md-3 offset-md-3'>
+            {pageTitle()}
+            <div className='card-body'>
+                <form>
                             {/* Recipe Name */}
                             <div className='form-group mb-2'>
                                 <label className='form-label'>Recipe Name:</label>
@@ -260,6 +310,62 @@ const RecipeComponent = () => {
                                     onChange={(e) => setRecipePersons(e.target.value)}
                                 />
                                 {errors.recipePersons && <div className='invalid-feedback'>{errors.recipePersons}</div>}
+                            </div>
+
+                            {/* carbohydrates */}
+                            <div className='form-group mb-2'>
+                                <label className='form-label'>Carbohydrates (g):</label>
+                                <input
+                                    type='number'
+                                    placeholder='Enter carbohydrates'
+                                    name='carbohydrates'
+                                    value={carbohydrates}
+                                    className={`form-control ${errors.carbohydrates ? 'is-invalid' : ''}`}
+                                    onChange={(e) => setCarbohydrates(e.target.value)}
+                                />
+                                {errors.carbohydrates && <div className='invalid-feedback'>{errors.carbohydrates}</div>}
+                            </div>
+
+                                                        {/* Proteins */}
+                                                        <div className='form-group mb-2'>
+                                <label className='form-label'>Proteins (g):</label>
+                                <input
+                                    type='number'
+                                    placeholder='Enter Proteins'
+                                    name='proteins'
+                                    value={proteins}
+                                    className={`form-control ${errors.proteins ? 'is-invalid' : ''}`}
+                                    onChange={(e) => setProteins(e.target.value)}
+                                />
+                                {errors.proteins && <div className='invalid-feedback'>{errors.proteins}</div>}
+                            </div>
+
+                            {/* Fats */}
+                            <div className='form-group mb-2'>
+                                <label className='form-label'>Fats (g):</label>
+                                <input
+                                    type='number'
+                                    placeholder='Enter Fats'
+                                    name='fats'
+                                    value={fats}
+                                    className={`form-control ${errors.fats ? 'is-invalid' : ''}`}
+                                    onChange={(e) => setFats(e.target.value)}
+                                />
+                                {errors.fats && <div className='invalid-feedback'>{errors.fats}</div>}
+                            </div>
+
+                            {/* calories */}
+                            <div className='form-group mb-2'>
+                                <label className='form-label'>Calories (g):</label>
+                                <input
+                                    type='number'
+                                    placeholder='Enter calories'
+                                    name='calories'
+                                    value={calories}
+                                    className={`form-control ${errors.calories ? 'is-invalid' : ''}`}
+                                    onChange={(e) => setCalories(e.target.value)}
+                                />
+                                {errors.calories && <div className='invalid-feedback'>{errors.calories}</div>}
                             </div>
     
                             {/* Recipe Image URL */}
