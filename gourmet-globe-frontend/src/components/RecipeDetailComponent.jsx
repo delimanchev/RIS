@@ -112,6 +112,12 @@ const RecipeDetailComponent = () => {
                     <strong>Ingredients:</strong><br />
                     {scaledIngredients || recipe.recipeIngredients}
                 </p>
+
+                <p>
+                    <strong>Nutritional Values:</strong><br />
+                    {recipe.recipeCalories} calories, of which: {recipe.recipeCarbohydrates} g carbohydrates, {recipe.recipeProteins} g proteins, {recipe.recipeFats} g fats, {recipe.recipeFibers} g fibers
+                </p>
+
                 <p><strong>Persons:</strong> {persons}</p>
                 <p><strong>Author:</strong> {recipe.recipeAuthor}</p>
                 <button onClick={() => setIsPopupOpen(true)} className="adjust-persons-button">

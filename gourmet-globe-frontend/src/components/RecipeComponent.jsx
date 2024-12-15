@@ -10,10 +10,11 @@ const RecipeComponent = () => {
     const [recipePersons, setRecipePersons] = useState('');
     const [recipeImage, setRecipeImage] = useState('');
     const [recipeCountry, setRecipeCountry] = useState('');
-    const [carbohydrates, setCarbohydrates] = useState('');
-    const [proteins, setProteins] = useState('');
-    const [fats, setFats] = useState('');
-    const [calories, setCalories] = useState('');
+    const [recipeCarbohydrates, setRecipeCarbohydrates] = useState('');
+    const [recipeProteins, setRecipeProteins] = useState('');
+    const [recipeFats, setRecipeFats] = useState('');
+    const [recipeFibers, setRecipeFibers] = useState('');
+    const [recipeCalories, setRecipeCalories] = useState('');
     
     const [errors, setErrors] = useState({
         recipeName: '',
@@ -23,10 +24,11 @@ const RecipeComponent = () => {
         recipePersons: '',
         recipeImage: '',
         recipeCountry: '',
-        carbohydrates: '',
-        proteins: '',
-        fats: '',
-        calories: ''
+        recipeCarbohydrates: '',
+        recipeProteins: '',
+        recipeFats: '',
+        recipeFibers: '',
+        recipeCalories: ''
     });
 
     const countries = [
@@ -82,12 +84,13 @@ const RecipeComponent = () => {
                 setRecipeAuthor(data.recipeAuthor);
                 setRecipeIngredients(data.recipeIngredients);
                 setRecipePersons(data.recipePersons);
+                setRecipeCarbohydrates(data.recipeCarbohydrates || '');
+                setRecipeProteins(data.recipeProteins || '');
+                setRecipeFats(data.recipeFats || '');
+                setRecipeFibers(data.recipeFibers || '');
+                setRecipeCalories(data.recipeCalories || '');
                 setRecipeImage(data.recipeImage);
                 setRecipeCountry(data.recipeCountry);
-                setCarbohydrates(data.carbohydrates || '');
-                setProteins(data.proteins || '');
-                setFats(data.fats || '');
-                setFats(data.calories || '');
             }).catch(error => {
                 console.error(error);
             });
@@ -104,12 +107,13 @@ const RecipeComponent = () => {
                 recipeAuthor,
                 recipeIngredients,
                 recipePersons,
+                recipeCarbohydrates,
+                recipeProteins,
+                recipeFats,
+                recipeFibers,
+                recipeCalories,
                 recipeImage,
-                recipeCountry,
-                carbohydrates,
-                proteins,
-                fats,
-                calories
+                recipeCountry
             };
 
             if (id) {
@@ -182,31 +186,38 @@ const RecipeComponent = () => {
             valid = false;
         }
 
-        if (carbohydrates.trim() && !isNaN(carbohydrates)) {
-            errorsCopy.carbohydrates = '';
+        if (recipeCarbohydrates.trim() && !isNaN(recipeCarbohydrates)) {
+            errorsCopy.recipeCarbohydrates = '';
         } else {
-            errorsCopy.carbohydrates = 'Valid Carbohydrates value is required';
+            errorsCopy.recipeCarbohydrates = 'Valid Carbohydrates value is required';
             valid = false;
         }
 
-        if (proteins.trim() && !isNaN(proteins)) {
-            errorsCopy.proteins = '';
+        if (recipeProteins.trim() && !isNaN(recipeProteins)) {
+            errorsCopy.recipeProteins = '';
         } else {
-            errorsCopy.proteins = 'Valid Proteins value is required';
+            errorsCopy.recipeProteins = 'Valid Proteins value is required';
             valid = false;
         }
 
-        if (fats.trim() && !isNaN(fats)) {
-            errorsCopy.fats = '';
+        if (recipeFats.trim() && !isNaN(recipeFats)) {
+            errorsCopy.recipeFats = '';
         } else {
-            errorsCopy.fats = 'Valid Fats value is required';
+            errorsCopy.recipeFats = 'Valid Fats value is required';
             valid = false;
         }
 
-        if (calories.trim() && !isNaN(calories)) {
-            errorsCopy.calories = '';
+        if (recipeFibers.trim() && !isNaN(recipeFibers)) {
+            errorsCopy.recipeFibers = '';
         } else {
-            errorsCopy.fats = 'Valid calories value is required';
+            errorsCopy.recipeFibers = 'Valid Fibers value is required';
+            valid = false;
+        }
+
+        if (recipeCalories.trim() && !isNaN(recipeCalories)) {
+            errorsCopy.recipeCalories = '';
+        } else {
+            errorsCopy.recipeCalories = 'Valid Calories value is required';
             valid = false;
         }
 
@@ -318,26 +329,26 @@ const RecipeComponent = () => {
                                 <input
                                     type='number'
                                     placeholder='Enter carbohydrates'
-                                    name='carbohydrates'
-                                    value={carbohydrates}
-                                    className={`form-control ${errors.carbohydrates ? 'is-invalid' : ''}`}
-                                    onChange={(e) => setCarbohydrates(e.target.value)}
+                                    name='recipeCarbohydrates'
+                                    value={recipeCarbohydrates}
+                                    className={`form-control ${errors.recipeCarbohydrates ? 'is-invalid' : ''}`}
+                                    onChange={(e) => setRecipeCarbohydrates(e.target.value)}
                                 />
-                                {errors.carbohydrates && <div className='invalid-feedback'>{errors.carbohydrates}</div>}
+                                {errors.recipeCarbohydrates && <div className='invalid-feedback'>{errors.recipeCarbohydrates}</div>}
                             </div>
 
-                                                        {/* Proteins */}
-                                                        <div className='form-group mb-2'>
+                            {/* Proteins */}
+                            <div className='form-group mb-2'>
                                 <label className='form-label'>Proteins (g):</label>
                                 <input
                                     type='number'
                                     placeholder='Enter Proteins'
-                                    name='proteins'
-                                    value={proteins}
-                                    className={`form-control ${errors.proteins ? 'is-invalid' : ''}`}
-                                    onChange={(e) => setProteins(e.target.value)}
+                                    name='recipeProteins'
+                                    value={recipeProteins}
+                                    className={`form-control ${errors.recipeProteins ? 'is-invalid' : ''}`}
+                                    onChange={(e) => setRecipeProteins(e.target.value)}
                                 />
-                                {errors.proteins && <div className='invalid-feedback'>{errors.proteins}</div>}
+                                {errors.recipeProteins && <div className='invalid-feedback'>{errors.recipeProteins}</div>}
                             </div>
 
                             {/* Fats */}
@@ -346,12 +357,26 @@ const RecipeComponent = () => {
                                 <input
                                     type='number'
                                     placeholder='Enter Fats'
-                                    name='fats'
-                                    value={fats}
-                                    className={`form-control ${errors.fats ? 'is-invalid' : ''}`}
-                                    onChange={(e) => setFats(e.target.value)}
+                                    name='recipeFats'
+                                    value={recipeFats}
+                                    className={`form-control ${errors.recipeFats ? 'is-invalid' : ''}`}
+                                    onChange={(e) => setRecipeFats(e.target.value)}
                                 />
-                                {errors.fats && <div className='invalid-feedback'>{errors.fats}</div>}
+                                {errors.recipeFats && <div className='invalid-feedback'>{errors.recipeFats}</div>}
+                            </div>
+
+                            {/* fibers */}
+                            <div className='form-group mb-2'>
+                                <label className='form-label'>Fibers (g):</label>
+                                    <input
+                                        type='number'
+                                        placeholder='Enter fibers'
+                                        name='recipeFibers'
+                                        value={recipeFibers}
+                                        className={`form-control ${errors.recipeFibers ? 'is-invalid' : ''}`}
+                                        onChange={(e) => setRecipeFibers(e.target.value)}
+                                    />
+                                {errors.recipeFibers && <div className='invalid-feedback'>{errors.recipeFibers}</div>}
                             </div>
 
                             {/* calories */}
@@ -360,12 +385,12 @@ const RecipeComponent = () => {
                                 <input
                                     type='number'
                                     placeholder='Enter calories'
-                                    name='calories'
-                                    value={calories}
-                                    className={`form-control ${errors.calories ? 'is-invalid' : ''}`}
-                                    onChange={(e) => setCalories(e.target.value)}
+                                    name='recipeCalories'
+                                    value={recipeCalories}
+                                    className={`form-control ${errors.recipeCalories ? 'is-invalid' : ''}`}
+                                    onChange={(e) => setRecipeCalories(e.target.value)}
                                 />
-                                {errors.calories && <div className='invalid-feedback'>{errors.calories}</div>}
+                                {errors.recipeCalories && <div className='invalid-feedback'>{errors.recipeCalories}</div>}
                             </div>
     
                             {/* Recipe Image URL */}

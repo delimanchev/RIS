@@ -53,8 +53,14 @@ public class RecipeServiceImpl implements RecipeService {
         recipe.setRecipeDescription(updatedRecipe.getRecipeDescription());
         recipe.setRecipeAuthor(updatedRecipe.getRecipeAuthor());
         recipe.setRecipeIngredients(updatedRecipe.getRecipeIngredients());
+        recipe.setRecipeCarbohydrates(updatedRecipe.getRecipeCarbohydrates());
+        recipe.setRecipeProteins(updatedRecipe.getRecipeProteins());
+        recipe.setRecipeFats(updatedRecipe.getRecipeFats());
+        recipe.setRecipeFibers(updatedRecipe.getRecipeFibers());
+        recipe.setRecipeCalories(updatedRecipe.getRecipeCalories());
         recipe.setRecipePersons(updatedRecipe.getRecipePersons());
         recipe.setRecipeImage(updatedRecipe.getRecipeImage());
+        recipe.setRecipeCountry(updatedRecipe.getRecipeCountry());
 
         Recipe updatedRecipeObj = recipeRepository.save(recipe);
         return RecipeMapper.mapToRecipeDto(updatedRecipeObj);
@@ -95,11 +101,10 @@ public class RecipeServiceImpl implements RecipeService {
             String[] parts = ingredient.split(":");
             String ingredientName = parts[0];
             int originalQuantity = Integer.parseInt(parts[1]);
-            int adjustedQuantity = originalQuantity * newServings / originalServings;  // Adjust the quantity based on servings
+            int adjustedQuantity = originalQuantity * newServings / originalServings;
             adjustedIngredients.append(ingredientName).append(":").append(adjustedQuantity).append(", ");
         }
     
-        // Remove the last comma and space
         adjustedIngredients.setLength(adjustedIngredients.length() - 2);
     
         recipe.setRecipeIngredients(adjustedIngredients.toString());
@@ -112,6 +117,11 @@ public class RecipeServiceImpl implements RecipeService {
                 recipe.getRecipeAuthor(),
                 recipe.getRecipeCountry(),
                 recipe.getRecipeIngredients(),
+                recipe.getRecipeCarbohydrates(),
+                recipe.getRecipeProteins(),
+                recipe.getRecipeFats(),
+                recipe.getRecipeFibers(),
+                recipe.getRecipeCalories(),
                 recipe.getRecipePersons(),
                 recipe.getRecipeImage()
         );
