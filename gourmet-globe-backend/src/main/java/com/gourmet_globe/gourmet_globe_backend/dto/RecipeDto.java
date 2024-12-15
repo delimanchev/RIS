@@ -16,6 +16,11 @@ public class RecipeDto {
     private String recipeAuthor;
     private String recipeCountry;
     private String recipeIngredients;
+    private Integer recipeCarbohydrates;
+    private Integer recipeProteins;
+    private Integer recipeFats;
+    private Integer recipeFibers;
+    private Integer recipeCalories;
     private Integer recipePersons;
     private String recipeImage;
 }
