@@ -7,9 +7,40 @@ const RecipeDetailComponent = () => {
     const { id } = useParams();
     const [recipe, setRecipe] = useState(null);
     const [scaledIngredients, setScaledIngredients] = useState(null);
+    const [scaledNutrition, setScaledNutrition] = useState(null);
     const [persons, setPersons] = useState(null);
     const [isPopupOpen, setIsPopupOpen] = useState(false);
     const [newPersons, setNewPersons] = useState(null);
+
+    // Constants for daily nutrient intake
+    const dailyIntake = {
+        calories: 2079.35,
+        carbohydrates: 310,
+        proteins: 50,
+        fats: 70,
+        fibers: 30,
+    };
+
+    // Calculate daily intake fulfillment for one person
+    const calculateDailyIntakeFulfillment = (nutrition, persons) => {
+        if (!nutrition || !persons) return null;
+
+        const perPersonNutrition = {
+            calories: nutrition.calories / persons,
+            carbohydrates: nutrition.carbohydrates / persons,
+            proteins: nutrition.proteins / persons,
+            fats: nutrition.fats / persons,
+            fibers: nutrition.fibers / persons,
+        };
+
+        return {
+            calories: ((perPersonNutrition.calories / dailyIntake.calories) * 100).toFixed(2),
+            carbohydrates: ((perPersonNutrition.carbohydrates / dailyIntake.carbohydrates) * 100).toFixed(2),
+            proteins: ((perPersonNutrition.proteins / dailyIntake.proteins) * 100).toFixed(2),
+            fats: ((perPersonNutrition.fats / dailyIntake.fats) * 100).toFixed(2),
+            fibers: ((perPersonNutrition.fibers / dailyIntake.fibers) * 100).toFixed(2),
+        };
+    };
 
     useEffect(() => {
         getRecipe(id)
@@ -18,30 +49,53 @@ const RecipeDetailComponent = () => {
                 setRecipe(recipeData);
                 setPersons(recipeData.recipePersons);
                 setScaledIngredients(recipeData.recipeIngredients);
+
+                // Initialize scaled nutrition with original values
+                setScaledNutrition({
+                    calories: recipeData.recipeCalories,
+                    carbohydrates: recipeData.recipeCarbohydrates,
+                    proteins: recipeData.recipeProteins,
+                    fats: recipeData.recipeFats,
+                    fibers: recipeData.recipeFibers,
+                });
             })
             .catch((error) => {
                 console.error('Error fetching recipe details:', error);
             });
     }, [id]);
 
-    const scaleIngredients = (newPersons) => {
+    const scaleIngredientsAndNutrition = (newPersons) => {
         if (!recipe || !recipe.recipePersons) return;
 
         const originalPersons = recipe.recipePersons;
 
+        // Scale ingredients
         const scaled = recipe.recipeIngredients.replace(/\b\d+(\.\d+)?\b/g, (match) => {
             const quantity = parseFloat(match);
             return ((quantity / originalPersons) * newPersons).toFixed(2);
         });
 
+        // Scale nutritional values
+        const scaledNutrition = {
+            calories: ((recipe.recipeCalories / originalPersons) * newPersons).toFixed(2),
+            carbohydrates: ((recipe.recipeCarbohydrates / originalPersons) * newPersons).toFixed(2),
+            proteins: ((recipe.recipeProteins / originalPersons) * newPersons).toFixed(2),
+            fats: ((recipe.recipeFats / originalPersons) * newPersons).toFixed(2),
+            fibers: ((recipe.recipeFibers / originalPersons) * newPersons).toFixed(2),
+        };
+
+        // Update state
         setScaledIngredients(scaled);
+        setScaledNutrition(scaledNutrition);
         setPersons(newPersons);
     };
 
     const handlePopupSubmit = () => {
-        scaleIngredients(newPersons);
+        scaleIngredientsAndNutrition(newPersons);
         setIsPopupOpen(false);
     };
+
+    const dailyFulfillment = calculateDailyIntakeFulfillment(scaledNutrition, persons);
 
     if (!recipe) {
         return <div>Loading...</div>;
@@ -115,8 +169,17 @@ const RecipeDetailComponent = () => {
 
                 <p>
                     <strong>Nutritional Values:</strong><br />
-                    {recipe.recipeCalories} calories, of which: {recipe.recipeCarbohydrates} g carbohydrates, {recipe.recipeProteins} g proteins, {recipe.recipeFats} g fats, {recipe.recipeFibers} g fibers
+                    {scaledNutrition
+                        ? `${scaledNutrition.calories} calories, of which: ${scaledNutrition.carbohydrates} g carbohydrates, ${scaledNutrition.proteins} g proteins, ${scaledNutrition.fats} g fats, ${scaledNutrition.fibers} g fibers`
+                        : `${recipe.recipeCalories} calories, of which: ${recipe.recipeCarbohydrates} g carbohydrates, ${recipe.recipeProteins} g proteins, ${recipe.recipeFats} g fats, ${recipe.recipeFibers} g fibers`}
                 </p>
+
+                {dailyFulfillment && (
+                    <p>
+                        <strong>Daily Intake Fulfillment per Person:</strong><br />
+                        {dailyFulfillment.calories}% of daily calories, {dailyFulfillment.carbohydrates}% of daily carbohydrates, {dailyFulfillment.proteins}% of daily proteins, {dailyFulfillment.fats}% of daily fats, {dailyFulfillment.fibers}% of daily fibers.
+                    </p>
+                )}
 
                 <p><strong>Persons:</strong> {persons}</p>
                 <p><strong>Author:</strong> {recipe.recipeAuthor}</p>
