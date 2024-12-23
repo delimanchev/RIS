@@ -12,6 +12,12 @@ public class RecipeMapper {
         recipe.setRecipeCountry(recipeDto.getRecipeCountry());
         recipe.setRecipeAuthor(recipeDto.getRecipeAuthor());
         recipe.setRecipeIngredients(recipeDto.getRecipeIngredients());
+        recipe.setRecipeCarbohydrates(recipeDto.getRecipeCarbohydrates());
+        recipe.setRecipeProteins(recipeDto.getRecipeProteins());
+        recipe.setRecipeFats(recipeDto.getRecipeFats());
+        recipe.setRecipeFibers(recipeDto.getRecipeFibers());
+        recipe.setRecipeCalories(recipeDto.getRecipeCalories());
+        recipe.setRecipeAcids(recipeDto.getRecipeAcids());
         recipe.setRecipePersons(recipeDto.getRecipePersons());
         recipe.setRecipeImage(recipeDto.getRecipeImage());
 
@@ -26,6 +32,12 @@ public class RecipeMapper {
         recipeDto.setRecipeCountry(recipe.getRecipeCountry());
         recipeDto.setRecipeAuthor(recipe.getRecipeAuthor());
         recipeDto.setRecipeIngredients(recipe.getRecipeIngredients());
+        recipeDto.setRecipeCarbohydrates(recipe.getRecipeCarbohydrates());
+        recipeDto.setRecipeProteins(recipe.getRecipeProteins());
+        recipeDto.setRecipeFats(recipe.getRecipeFats());
+        recipeDto.setRecipeFibers(recipe.getRecipeFibers());
+        recipeDto.setRecipeCalories(recipe.getRecipeCalories());
+        recipeDto.setRecipeAcids(recipe.getRecipeAcids());
         recipeDto.setRecipePersons(recipe.getRecipePersons());
         recipeDto.setRecipeImage(recipe.getRecipeImage());
 

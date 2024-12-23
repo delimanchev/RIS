@@ -134,10 +134,10 @@ const RecipeCardsComponent = () => {
                         <div key={recipe.id} className="col-md-4 mb-4">
                             <div className="card">
                                 <img
-                                    src={recipe.recipeImage} // Assuming recipeImage is a URL
+                                    src={recipe.recipeImage}
                                     alt={recipe.recipeName}
                                     className="card-img-top"
-                                    style={{ height: '200px', objectFit: 'cover' }} // Set appropriate dimensions
+                                    style={{ height: '200px', objectFit: 'cover' }}
                                 />
                                 <div className="card-body">
                                     <h5 className="card-title">{recipe.recipeName}</h5>

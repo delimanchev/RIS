@@ -1,7 +1,7 @@
 import React from 'react';
 import { useParams } from 'react-router-dom'; 
 import { getRecipe } from '../services/RecipeService'; 
-import '../css/ContactUsComponent.css'; // Make sure to link the CSS file
+import '../css/ContactUsComponent.css';
 
 const ContactUsComponent = () => {
   const { id } = useParams(); 
@@ -9,7 +9,7 @@ const ContactUsComponent = () => {
 
   React.useEffect(() => {
     if (id) {
-      getRecipe(id) // Fetch recipe if there's an ID in the URL
+      getRecipe(id)
         .then((response) => {
           setRecipe(response.data); 
         })

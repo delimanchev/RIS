@@ -37,6 +37,12 @@ class RecipeServiceImplTest {
                 "John Doe",
                 "Serbia",
                 "paprika",
+                30,
+                30,
+                30,
+                30,
+                500,
+                2,
                 2,
                 "https://natureta.si/wp-content/uploads/2022/01/polpekoci-ajvar-e1658756496692.png"
         );
@@ -48,6 +54,12 @@ class RecipeServiceImplTest {
                 "John Doe",
                 "Serbia",
                 "paprika",
+                30,
+                30,
+                30,
+                30,
+                500,
+                2,
                 2,
                 "https://natureta.si/wp-content/uploads/2022/01/polpekoci-ajvar-e1658756496692.png"
         );
@@ -81,6 +93,12 @@ class RecipeServiceImplTest {
                 "John Doe",
                 "Serbia",
                 "paprika",
+                30,
+                30,
+                30,
+                30,
+                500,
+                2,
                 2,
                 "https://natureta.si/wp-content/uploads/2022/01/polpekoci-ajvar-e1658756496692.png"
         );
@@ -91,6 +109,12 @@ class RecipeServiceImplTest {
                 "Jane Doe",
                 "Serbia",
                 "paprika",
+                30,
+                30,
+                30,
+                30,
+                500,
+                2,
                 2,
                 "https://natureta.si/wp-content/uploads/2022/01/polpekoci-ajvar-e1658756496692.png"
         );
@@ -126,6 +150,12 @@ void testGetAllRecipes() {
             "John Doe",
             "Serbia",
             "paprika",
+            30,
+            30,
+            30,
+            30,
+            500,
+            8,
             2,
             "https://natureta.si/wp-content/uploads/2022/01/polpekoci-ajvar-e1658756496692.png"
     );
@@ -136,6 +166,12 @@ void testGetAllRecipes() {
             "Jane Doe",
             "Serbia",
             "paprika",
+            30,
+            30,
+            30,
+            30,
+            500,
+            7,
             2,
             "https://natureta.si/wp-content/uploads/2022/01/polpekoci-ajvar-e1658756496692.png"
     );
@@ -171,6 +207,12 @@ void testDeleteRecipe_NotFound() {
                 "John Doe",
                 "Serbia",
                 "paprika",
+                30,
+                30,
+                30,
+                30,
+                500,
+                2,
                 2,
                 "https://natureta.si/wp-content/uploads/2022/01/polpekoci-ajvar-e1658756496692.png"
         );
@@ -182,6 +224,12 @@ void testDeleteRecipe_NotFound() {
                 "John Doe",
                 "Serbia",
                 "paprika",
+                30,
+                30,
+                30,
+                30,
+                500,
+                2,
                 3,
                 "https://natureta.si/wp-content/uploads/2022/01/polpekoci-ajvar-e1658756496692-updated.png"
         );
@@ -193,6 +241,12 @@ void testDeleteRecipe_NotFound() {
                 "John Doe",
                 "Serbia",
                 "paprika",
+                30,
+                30,
+                30,
+                30,
+                500,
+                2,
                 3,
                 "https://natureta.si/wp-content/uploads/2022/01/polpekoci-ajvar-e1658756496692-updated.png"
         );
@@ -219,6 +273,12 @@ void testDeleteRecipe_NotFound() {
                 "John Doe",
                 "Serbia",
                 "paprika",
+                30,
+                30,
+                30,
+                30,
+                500,
+                2,
                 3,
                 "https://natureta.si/wp-content/uploads/2022/01/polpekoci-ajvar-e1658756496692-updated.png"
         );
@@ -241,7 +301,13 @@ void testDeleteRecipe_NotFound() {
                 "John Doe",
                 "Serbia",
                 "paprika:200, salt:100",
-                2,  // Default servings
+                30,
+                30,
+                30,
+                30,
+                500,
+                2,
+                2,
                 "https://natureta.si/wp-content/uploads/2022/01/polpekoci-ajvar-e1658756496692.png"
         );
     
@@ -263,8 +329,14 @@ void testAdjustIngredientsForFewerServings() {
             "Delicious Balkan spread made from roasted red peppers.",
             "John Doe",
             "Serbia",
-            "paprika:200, salt:100",  // Sastojci za 2 porcije
-            2,  // Početni broj porcija
+            "paprika:200, salt:100",
+            30,
+            30,
+            30,
+            30,
+            500,
+            2,
+            2,
             "https://natureta.si/wp-content/uploads/2022/01/polpekoci-ajvar-e1658756496692.png"
     );
 
@@ -303,8 +375,14 @@ void testAdjustIngredientsForZeroOrNegativeServings() {
             "Delicious Balkan spread made from roasted red peppers.",
             "John Doe",
             "Serbia",
-            "paprika:200, salt:100",  // Sastojci za 2 porcije
-            2,  // Početni broj porcija
+            "paprika:200, salt:100",
+            30,
+            30,
+            30,
+            30,
+            500,
+            2,
+            2,
             "https://natureta.si/wp-content/uploads/2022/01/polpekoci-ajvar-e1658756496692.png"
     );
 
