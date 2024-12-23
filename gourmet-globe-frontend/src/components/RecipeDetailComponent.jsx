@@ -19,6 +19,7 @@ const RecipeDetailComponent = () => {
         proteins: 50,
         fats: 70,
         fibers: 30,
+        acids: 24,
     };
 
     // Calculate daily intake fulfillment for one person
@@ -31,6 +32,7 @@ const RecipeDetailComponent = () => {
             proteins: nutrition.proteins / persons,
             fats: nutrition.fats / persons,
             fibers: nutrition.fibers / persons,
+            acids: nutrition.acids / persons,
         };
 
         return {
@@ -39,6 +41,7 @@ const RecipeDetailComponent = () => {
             proteins: ((perPersonNutrition.proteins / dailyIntake.proteins) * 100).toFixed(2),
             fats: ((perPersonNutrition.fats / dailyIntake.fats) * 100).toFixed(2),
             fibers: ((perPersonNutrition.fibers / dailyIntake.fibers) * 100).toFixed(2),
+            acids: ((perPersonNutrition.acids / dailyIntake.acids) * 100).toFixed(2),
         };
     };
 
@@ -57,6 +60,7 @@ const RecipeDetailComponent = () => {
                     proteins: recipeData.recipeProteins,
                     fats: recipeData.recipeFats,
                     fibers: recipeData.recipeFibers,
+                    acids: recipeData.recipeAcids,
                 });
             })
             .catch((error) => {
@@ -82,6 +86,7 @@ const RecipeDetailComponent = () => {
             proteins: ((recipe.recipeProteins / originalPersons) * newPersons).toFixed(2),
             fats: ((recipe.recipeFats / originalPersons) * newPersons).toFixed(2),
             fibers: ((recipe.recipeFibers / originalPersons) * newPersons).toFixed(2),
+            acids: ((recipe.recipeAcids / originalPersons) * newPersons).toFixed(2),
         };
 
         // Update state
@@ -168,16 +173,17 @@ const RecipeDetailComponent = () => {
                 </p>
 
                 <p>
-                    <strong>Nutritional Values:</strong><br />
-                    {scaledNutrition
-                        ? `${scaledNutrition.calories} calories, of which: ${scaledNutrition.carbohydrates} g carbohydrates, ${scaledNutrition.proteins} g proteins, ${scaledNutrition.fats} g fats, ${scaledNutrition.fibers} g fibers`
-                        : `${recipe.recipeCalories} calories, of which: ${recipe.recipeCarbohydrates} g carbohydrates, ${recipe.recipeProteins} g proteins, ${recipe.recipeFats} g fats, ${recipe.recipeFibers} g fibers`}
-                </p>
+    <strong>Nutritional Values:</strong><br />
+    {scaledNutrition
+        ? `${scaledNutrition.calories} calories, of which: ${scaledNutrition.carbohydrates} g carbohydrates, ${scaledNutrition.proteins} g proteins, ${scaledNutrition.fats} g fats, ${scaledNutrition.fibers} g fibers, ${scaledNutrition.acids} g acids`
+        : `${recipe.recipeCalories} calories, of which: ${recipe.recipeCarbohydrates} g carbohydrates, ${recipe.recipeProteins} g proteins, ${recipe.recipeFats} g fats, ${recipe.recipeFibers} g fibers, ${recipe.recipeAcids || 0} g acids`} 
+</p>
+
 
                 {dailyFulfillment && (
                     <p>
                         <strong>Daily Intake Fulfillment per Person:</strong><br />
-                        {dailyFulfillment.calories}% of daily calories, {dailyFulfillment.carbohydrates}% of daily carbohydrates, {dailyFulfillment.proteins}% of daily proteins, {dailyFulfillment.fats}% of daily fats, {dailyFulfillment.fibers}% of daily fibers.
+                        {dailyFulfillment.calories}% of daily calories, {dailyFulfillment.carbohydrates}% of daily carbohydrates, {dailyFulfillment.proteins}% of daily proteins, {dailyFulfillment.fats}% of daily fats, {dailyFulfillment.fibers}% of daily fibers, {dailyFulfillment.acids}% of daily acids.
                     </p>
                 )}
 

@@ -21,6 +21,7 @@ public class RecipeDto {
     private Integer recipeFats;
     private Integer recipeFibers;
     private Integer recipeCalories;
+    private Integer recipeAcids;
     private Integer recipePersons;
     private String recipeImage;
 }

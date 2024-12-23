@@ -43,6 +43,7 @@ class RecipeServiceImplTest {
                 30,
                 500,
                 2,
+                2,
                 "https://natureta.si/wp-content/uploads/2022/01/polpekoci-ajvar-e1658756496692.png"
         );
 
@@ -58,6 +59,7 @@ class RecipeServiceImplTest {
                 30,
                 30,
                 500,
+                2,
                 2,
                 "https://natureta.si/wp-content/uploads/2022/01/polpekoci-ajvar-e1658756496692.png"
         );
@@ -97,6 +99,7 @@ class RecipeServiceImplTest {
                 30,
                 500,
                 2,
+                2,
                 "https://natureta.si/wp-content/uploads/2022/01/polpekoci-ajvar-e1658756496692.png"
         );
         Recipe recipe2 = new Recipe(
@@ -111,6 +114,7 @@ class RecipeServiceImplTest {
                 30,
                 30,
                 500,
+                2,
                 2,
                 "https://natureta.si/wp-content/uploads/2022/01/polpekoci-ajvar-e1658756496692.png"
         );
@@ -151,6 +155,7 @@ void testGetAllRecipes() {
             30,
             30,
             500,
+            8,
             2,
             "https://natureta.si/wp-content/uploads/2022/01/polpekoci-ajvar-e1658756496692.png"
     );
@@ -166,6 +171,7 @@ void testGetAllRecipes() {
             30,
             30,
             500,
+            7,
             2,
             "https://natureta.si/wp-content/uploads/2022/01/polpekoci-ajvar-e1658756496692.png"
     );
@@ -207,6 +213,7 @@ void testDeleteRecipe_NotFound() {
                 30,
                 500,
                 2,
+                2,
                 "https://natureta.si/wp-content/uploads/2022/01/polpekoci-ajvar-e1658756496692.png"
         );
 
@@ -222,6 +229,7 @@ void testDeleteRecipe_NotFound() {
                 30,
                 30,
                 500,
+                2,
                 3,
                 "https://natureta.si/wp-content/uploads/2022/01/polpekoci-ajvar-e1658756496692-updated.png"
         );
@@ -238,6 +246,7 @@ void testDeleteRecipe_NotFound() {
                 30,
                 30,
                 500,
+                2,
                 3,
                 "https://natureta.si/wp-content/uploads/2022/01/polpekoci-ajvar-e1658756496692-updated.png"
         );
@@ -269,6 +278,7 @@ void testDeleteRecipe_NotFound() {
                 30,
                 30,
                 500,
+                2,
                 3,
                 "https://natureta.si/wp-content/uploads/2022/01/polpekoci-ajvar-e1658756496692-updated.png"
         );
@@ -297,6 +307,7 @@ void testDeleteRecipe_NotFound() {
                 30,
                 500,
                 2,
+                2,
                 "https://natureta.si/wp-content/uploads/2022/01/polpekoci-ajvar-e1658756496692.png"
         );
     
@@ -324,6 +335,7 @@ void testAdjustIngredientsForFewerServings() {
             30,
             30,
             500,
+            2,
             2,
             "https://natureta.si/wp-content/uploads/2022/01/polpekoci-ajvar-e1658756496692.png"
     );
@@ -369,6 +381,7 @@ void testAdjustIngredientsForZeroOrNegativeServings() {
             30,
             30,
             500,
+            2,
             2,
             "https://natureta.si/wp-content/uploads/2022/01/polpekoci-ajvar-e1658756496692.png"
     );

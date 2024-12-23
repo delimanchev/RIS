@@ -38,6 +38,8 @@ public class Recipe {
     private Integer recipeFibers;
     @Column(name = "recipe_calories")
     private Integer recipeCalories;
+    @Column(name = "recipe_acids")
+    private Integer recipeAcids;
     @Column(name = "recipe_persons")
     private Integer recipePersons;
     @Column(name = "recipe_image")

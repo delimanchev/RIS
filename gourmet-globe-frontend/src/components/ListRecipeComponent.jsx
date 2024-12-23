@@ -160,7 +160,7 @@ const ListRecipeComponent = () => {
                                     <td>{recipe.recipeCountry}</td>
                                     <td>{recipe.recipeAuthor}</td>
                                     <td>{recipe.recipeIngredients}</td>
-                                    <td>{recipe.recipeCalories} calories, {recipe.recipeCarbohydrates}g carbs, {recipe.recipeProteins}g proteins, {recipe.recipeFats}g fats, {recipe.recipeFibers}g fibers
+                                    <td>{recipe.recipeCalories} calories, {recipe.recipeCarbohydrates}g carbs, {recipe.recipeProteins}g proteins, {recipe.recipeFats}g fats, {recipe.recipeFibers}g fibers, {recipe.recipeAcids}g acids
                                     </td>
                                     <td>{recipe.recipePersons}</td>
                                     <td>
