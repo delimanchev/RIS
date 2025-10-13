@@ -38,9 +38,9 @@ API: RESTful API, razvit z uporabo Spring Boot
 
 🔧 Navodila za zaganjanje aplikacije
 
-Backend: Prvič se zažene z uporabo gumba Run v izvajalnem okolju IntelliJ IDEA.
+Backend: Prvič se se odpre cd gourmet-globe-backend in se tipka ukaz mvn spring-boot:run.
 
-Frontend: Za zagon frontend aplikacije uporabite ukaz npm run dev.
+Frontend: Za zagon frontend aplikacije uporabite ukaz npm run dev v gourmet-globe-frontend.
 
 
 🤝 Prispevki
