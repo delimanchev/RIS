@@ -42,6 +42,8 @@ Backend: Prvič se se odpre cd gourmet-globe-backend in se tipka ukaz mvn spring
 
 Frontend: Za zagon frontend aplikacije uporabite ukaz npm run dev v gourmet-globe-frontend.
 
+Ce zelis da kot admin dodas nekateri recept, nima tipko za to, samo v url-ju dodas http://localhost:3000/admin-panel/add-recipe
+
 
 🤝 Prispevki
 
