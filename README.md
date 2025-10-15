@@ -59,6 +59,9 @@ Zavežite svoje spremembe (git commit -m 'Dodaj novo funkcionalnost')
 Pritisnite na vejo (git push origin feature/YourFeature)
 Odprite pull request
 
+Standardi
+- Backend je pravilno strukturiran po slojih (controller, service, repository, entity, dto, mapper) in dobro sledi načelu ločitve odgovornosti. Uporaba Spring Boot anotacij je ustrezna, poimenovanje razredov sledi PascalCase, metod in spremenljivk camelCase, paketi pa so v lowercase, kar ustreza standardom Jave. Koda je čista in logično organizirana
+- Frontend uporablja React in ima modularno zgradbo, kjer so komponente smiselno ločene. Uporaba funkcijskih komponent in hookov (useState, useEffect) je pravilna, poimenovanje komponent v PascalCase, funkcij in spremenljivk v camelCase, CSS razredov pa v kebab-case, kar sledi konvencijam React ekosistema
 
 🌟 Zahvale
 Velika zahvala kulinaričnim skupnostim po vsem svetu za navdih in avtentične recepte, ki omogočajo, da Gourmet Globe zaživi!
