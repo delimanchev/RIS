@@ -4,15 +4,95 @@ Dobrodošli v Gourmet Globe – vašem potnem listu do okusov z vsega sveta! Ta 
 
 🧪 Testiranje
 
-Za zagotovitev stabilnosti in kakovosti kode smo izvedli obsežno testiranje našega sistema. V repozitoriju je bila ustvarjena nova mapa `testiranje`, ki vsebuje:
+Za zagotovitev stabilnosti in kakovosti kode smo izvedli obsežno testiranje backend sistema Gourmet Globe. V repozitoriju je bila ustvarjena mapa testiranje, ki vsebuje:
 
-Enotni testi: Testi, napisani z uporabo JUnit 5 in Mock, ki preverjajo delovanje ključnih funkcionalnosti sistema, vključno z metodami za pridobivanje, dodajanje, iskanje in brisanje receptov. 
+Enotni testi: Napisani z uporabo JUnit 5 in Mockito, pokrivajo vse ključne funkcionalnosti sistema.
 
-Poročilo o testiranju: Dokument v formatu Markdown z vsemi podrobnostmi o izvedenih testih, vključno z opisom, odgovornostmi članov ekipe in analizo uspešnosti testov. Poročilo o testiranju lahko najdete v mapi `testiranje` v datoteki `porocilo_testiranja.md`. 
+Poročilo o testiranju: porocilo_testiranja.md vsebuje podrobnosti o izvedenih testih, odgovornosti članov ekipe in analizo uspešnosti testov.
 
-Testi vključujejo: 
+V testih smo preverili, ali metode pravilno obdelujejo podatke iz baze, vključujoč pozitivne in negativne scenarije.
 
-Preverjanje, ali so podatki o receptih pravilno pridobljeni iz baze podatkov, testiranje napak pri iskanju in brisanju receptov, preverjanje filtrov in iskanja receptov glede na državo. Za podrobnosti o izvedenih testih in napakah, ki smo jih odkrili ter popravkih, si oglejte `porocilo_testiranja.md`...   
+📋 Testirane funkcionalnosti
+
+1. getRecipeById()
+
+Opis: Preverja, ali metoda vrne recept z določenim ID-jem ali vrže ResourceNotFoundException, če recept ne obstaja.
+
+Unit testovi:
+
+testGetRecipeById_Found() → pozitivni primer, preverja pravilno vrnjene podatke.
+
+testGetRecipeById_NotFound() → negativni primer, preverja izjemne situacije.
+
+Zakaj je pomembno: Omogoča, da se iskanje po ID-ju pravilno izvaja in napake ustrezno obravnavajo.
+
+2. getRecipesByCountry()
+
+Opis: Preverja iskanje receptov glede na državo.
+
+Unit testovi:
+
+testGetRecipesByCountry_Found() → vrne seznam receptov za obstoječo državo.
+
+testGetRecipesByCountry_NotFound() → vrne prazno listo za neobstoječo državo.
+
+Zakaj je pomembno: Ključna funkcionalnost za filtriranje receptov po izvorni državi.
+
+3. getAllRecipes()
+
+Opis: Preverja, ali metoda vrne vse recepte iz baze.
+
+Unit testovi:
+
+testGetAllRecipes() → pozitivni primer, preverja pravilno število in vsebino vrnjenih receptov.
+
+testGetAllRecipes_Empty() → negativni primer, preverja, da metoda vrne prazno listo, če receptov ni v bazi.
+
+⚡ Opomba: Prej je obstajal samo pozitivni test (testGetAllRecipes()), sedaj smo dodali tudi negativni scenarij, da je testna pokritost popolna.
+
+Zakaj je pomembno: Zagotavlja, da se vsi recepti pravilno prikazujejo na frontend-u in da metoda ustrezno obravnava tudi primer brez receptov.
+
+4. deleteRecipe()
+
+Opis: Omogoča brisanje recepta po ID-ju.
+
+Unit testovi:
+
+testDeleteRecipe_Found() → pozitivni primer, uspešno brisanje.
+
+testDeleteRecipe_NotFound() → negativni primer, vrže ResourceNotFoundException.
+
+⚡ Opomba: Prej je obstajal samo negativni test (testDeleteRecipe_NotFound()), sedaj smo dodali tudi pozitivni scenarij za pravilno brisanje.
+
+Zakaj je pomembno: Prej je obstajal samo negativni scenarij, zdaj je dopolnjen tudi pozitivni test za pravilno brisanje.
+
+5. updateRecipe() in adjustRecipeForServings()
+
+Opis updateRecipe(): Spreminja podatke obstoječega recepta.
+
+Unit testovi updateRecipe():
+
+testUpdateRecipe_Found() → pozitivni primer, preverja pravilno posodobitev.
+
+testUpdateRecipe_NotFound() → negativni primer, vrže ResourceNotFoundException.
+
+Opis adjustRecipeForServings(): Prilagodi količine sestavin glede na število porcij.
+
+Unit testovi adjustRecipeForServings():
+
+testAdjustIngredientsForMoreServings() → poveča količine sestavin.
+
+testAdjustIngredientsForFewerServings() → zmanjša količine sestavin.
+
+testAdjustIngredientsForNonExistentRecipe() → vrže ResourceNotFoundException.
+
+testAdjustIngredientsForZeroOrNegativeServings() → vrže IllegalArgumentException za 0 ali negativno število porcij.
+
+Zakaj je pomembno: Poskrbi, da se recepti pravilno prilagajajo glede na število porcij in prepreči napake pri neobstoječih receptih ali neveljavnem številu porcij.
+
+📊 Analiza uspešnosti testov
+
+Vsi testi so bili uspešni. Po dodajanju pozitivnega testa za deleteRecipe() smo preverili vse druge metode, scenarije in ugotovili, da so testni primeri smiselni in popolni.
 
 🚀 Funkcije
 
