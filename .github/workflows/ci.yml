@@ -33,10 +33,10 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: gourmet-globe-backend
-          path: backend/target/*.jar
+          path: gourmet-globe-backend/target/*.jar
 
   frontend:
-    name: ⚛️ Build & Test Frontend
+    name: Build & Test Frontend
     runs-on: ubuntu-latest
 
     defaults:
@@ -66,4 +66,4 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: gourmet-globe-frontend
-          path: frontend/dist
+          path: gourmet-globe-frontend/dist
