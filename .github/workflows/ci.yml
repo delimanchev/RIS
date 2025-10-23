@@ -36,34 +36,34 @@ jobs:
           path: gourmet-globe-backend/target/*.jar
 
   frontend:
-    name: Build & Test Frontend
-    runs-on: ubuntu-latest
+  name: Build & Test Frontend
+  runs-on: ubuntu-latest
 
-    defaults:
-      run:
-        working-directory: gourmet-globe-frontend
+  steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
 
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
+    - name: Set up Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: 20
+        cache: npm
+        cache-dependency-path: gourmet-globe-frontend/package-lock.json
 
-      - name: Set up Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: 20
-          cache: npm
+    - name: Install dependencies
+      working-directory: gourmet-globe-frontend
+      run: npm ci
 
-      - name: Install dependencies
-        run: npm ci
+    - name: Run tests
+      working-directory: gourmet-globe-frontend
+      run: npm test --if-present
 
-      - name: Run tests
-        run: npm test --if-present
+    - name: Build Vite app
+      working-directory: gourmet-globe-frontend
+      run: npm run build
 
-      - name: Build Vite app
-        run: npm run build
-
-      - name: Upload frontend artifact
-        uses: actions/upload-artifact@v4
-        with:
-          name: gourmet-globe-frontend
-          path: gourmet-globe-frontend/dist
+    - name: Upload frontend artifact
+      uses: actions/upload-artifact@v4
+      with:
+        name: gourmet-globe-frontend
+        path: gourmet-globe-frontend/dist
