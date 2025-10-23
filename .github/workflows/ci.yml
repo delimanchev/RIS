@@ -13,7 +13,7 @@ jobs:
 
     defaults:
       run:
-        working-directory: backend
+        working-directory: gourmet-globe-backend
 
     steps:
       - name: Checkout repository
@@ -41,7 +41,7 @@ jobs:
 
     defaults:
       run:
-        working-directory: frontend
+        working-directory: gourmet-globe-frontend
 
     steps:
       - name: Checkout repository
