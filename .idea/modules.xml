@@ -2,7 +2,11 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+<<<<<<< HEAD
       <module fileurl="file://$PROJECT_DIR$/.idea/Razvoj Informacijskih Sistemov.iml" filepath="$PROJECT_DIR$/.idea/Razvoj Informacijskih Sistemov.iml" />
+=======
+      <module fileurl="file://$PROJECT_DIR$/.idea/RIS.iml" filepath="$PROJECT_DIR$/.idea/RIS.iml" />
+>>>>>>> 287205a292e39a732580b45db74241ce12e36e82
     </modules>
   </component>
 </project>

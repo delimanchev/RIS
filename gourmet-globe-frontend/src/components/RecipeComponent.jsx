@@ -15,6 +15,7 @@ const RecipeComponent = () => {
     const [recipeFats, setRecipeFats] = useState('');
     const [recipeFibers, setRecipeFibers] = useState('');
     const [recipeCalories, setRecipeCalories] = useState('');
+    const [recipeAcids, setRecipeAcids] = useState('');
     
     const [errors, setErrors] = useState({
         recipeName: '',
@@ -28,7 +29,8 @@ const RecipeComponent = () => {
         recipeProteins: '',
         recipeFats: '',
         recipeFibers: '',
-        recipeCalories: ''
+        recipeCalories: '',
+        recipeAcids: ''
     });
 
     const countries = [
@@ -89,6 +91,7 @@ const RecipeComponent = () => {
                 setRecipeFats(data.recipeFats || '');
                 setRecipeFibers(data.recipeFibers || '');
                 setRecipeCalories(data.recipeCalories || '');
+                setRecipeAcids(data.recipeAcids || '');
                 setRecipeImage(data.recipeImage);
                 setRecipeCountry(data.recipeCountry);
             }).catch(error => {
@@ -112,6 +115,7 @@ const RecipeComponent = () => {
                 recipeFats,
                 recipeFibers,
                 recipeCalories,
+                recipeAcids,
                 recipeImage,
                 recipeCountry
             };
@@ -218,6 +222,13 @@ const RecipeComponent = () => {
             errorsCopy.recipeCalories = '';
         } else {
             errorsCopy.recipeCalories = 'Valid Calories value is required';
+            valid = false;
+        }
+
+        if (recipeAcids.trim() && !isNaN(recipeAcids)) {
+            errorsCopy.recipeAcids = '';
+        } else {
+            errorsCopy.recipeAcids = 'Valid Acids value is required';
             valid = false;
         }
 
@@ -392,6 +403,21 @@ const RecipeComponent = () => {
                                 />
                                 {errors.recipeCalories && <div className='invalid-feedback'>{errors.recipeCalories}</div>}
                             </div>
+
+                            {/* acids */}
+                            <div className='form-group mb-2'>
+    <label className='form-label'>Acids (g):</label>
+    <input
+        type='number'
+        placeholder='Enter acids'
+        name='recipeAcids'
+        value={recipeAcids}
+        className={`form-control ${errors.recipeAcids ? 'is-invalid' : ''}`}
+        onChange={(e) => setRecipeAcids(e.target.value)} // Updates the state
+    />
+    {errors.recipeAcids && <div className='invalid-feedback'>{errors.recipeAcids}</div>}
+</div>
+
     
                             {/* Recipe Image URL */}
                             <div className='form-group mb-2'>

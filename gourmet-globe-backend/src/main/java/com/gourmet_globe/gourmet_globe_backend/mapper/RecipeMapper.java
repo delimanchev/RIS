@@ -17,6 +17,7 @@ public class RecipeMapper {
         recipe.setRecipeFats(recipeDto.getRecipeFats());
         recipe.setRecipeFibers(recipeDto.getRecipeFibers());
         recipe.setRecipeCalories(recipeDto.getRecipeCalories());
+        recipe.setRecipeAcids(recipeDto.getRecipeAcids());
         recipe.setRecipePersons(recipeDto.getRecipePersons());
         recipe.setRecipeImage(recipeDto.getRecipeImage());
 
@@ -36,6 +37,7 @@ public class RecipeMapper {
         recipeDto.setRecipeFats(recipe.getRecipeFats());
         recipeDto.setRecipeFibers(recipe.getRecipeFibers());
         recipeDto.setRecipeCalories(recipe.getRecipeCalories());
+        recipeDto.setRecipeAcids(recipe.getRecipeAcids());
         recipeDto.setRecipePersons(recipe.getRecipePersons());
         recipeDto.setRecipeImage(recipe.getRecipeImage());
 

@@ -58,6 +58,7 @@ public class RecipeServiceImpl implements RecipeService {
         recipe.setRecipeFats(updatedRecipe.getRecipeFats());
         recipe.setRecipeFibers(updatedRecipe.getRecipeFibers());
         recipe.setRecipeCalories(updatedRecipe.getRecipeCalories());
+        recipe.setRecipeAcids(updatedRecipe.getRecipeAcids());
         recipe.setRecipePersons(updatedRecipe.getRecipePersons());
         recipe.setRecipeImage(updatedRecipe.getRecipeImage());
         recipe.setRecipeCountry(updatedRecipe.getRecipeCountry());
@@ -122,6 +123,7 @@ public class RecipeServiceImpl implements RecipeService {
                 recipe.getRecipeFats(),
                 recipe.getRecipeFibers(),
                 recipe.getRecipeCalories(),
+                recipe.getRecipeAcids(),
                 recipe.getRecipePersons(),
                 recipe.getRecipeImage()
         );

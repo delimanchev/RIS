@@ -17,8 +17,10 @@ Opis: Ta test preverja, ali metoda za iskanje receptov glede na državo pravilno
 Zakaj je pomemben: Pomembno je zagotoviti, da se lahko recepti filtrirajo glede na izvorno državo, kar je ključna funkcionalnost za spletno stran, ki se osredotoča na mednarodno kuhinjo.
 
 deleteRecipe():
-Opis: Ta test preverja, ali metoda za brisanje recepta pravilno izbriše recept iz baze podatkov ali pa vrže napako, če recept z določenim ID-jem ne obstaja.
-Zakaj je pomemben: Preverja, ali je brisanje receptov varno in ali je obvladano ravnanje z napakami, ko recept ne obstaja.
+Pozitivni test preverja, ali metoda uspešno izbriše recept, ki obstaja v bazi.
+Negativni test preverja, ali metoda vrže ustrezno izjemo ResourceNotFoundException,
+  kadar recept z določenim ID-jem ne obstaja.
+
 
 Člani skupine in odgovornosti
 

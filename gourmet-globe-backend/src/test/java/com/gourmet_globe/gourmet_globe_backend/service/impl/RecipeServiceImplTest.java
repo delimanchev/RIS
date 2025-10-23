@@ -43,6 +43,7 @@ class RecipeServiceImplTest {
                 30,
                 500,
                 2,
+                2,
                 "https://natureta.si/wp-content/uploads/2022/01/polpekoci-ajvar-e1658756496692.png"
         );
 
@@ -58,6 +59,7 @@ class RecipeServiceImplTest {
                 30,
                 30,
                 500,
+                2,
                 2,
                 "https://natureta.si/wp-content/uploads/2022/01/polpekoci-ajvar-e1658756496692.png"
         );
@@ -97,6 +99,7 @@ class RecipeServiceImplTest {
                 30,
                 500,
                 2,
+                2,
                 "https://natureta.si/wp-content/uploads/2022/01/polpekoci-ajvar-e1658756496692.png"
         );
         Recipe recipe2 = new Recipe(
@@ -111,6 +114,7 @@ class RecipeServiceImplTest {
                 30,
                 30,
                 500,
+                2,
                 2,
                 "https://natureta.si/wp-content/uploads/2022/01/polpekoci-ajvar-e1658756496692.png"
         );
@@ -138,6 +142,17 @@ class RecipeServiceImplTest {
     }
     
     @Test
+void testGetAllRecipes_Empty() {
+    // Mock repository, da vrne prazno listo
+    when(recipeRepository.findAll()).thenReturn(Arrays.asList());
+
+    List<RecipeDto> result = recipeService.getAllRecipes();
+
+    // Preverimo, da je rezultat ne-null in prazen
+    assertNotNull(result);
+    assertTrue(result.isEmpty());
+}
+
 void testGetAllRecipes() {
     Recipe recipe1 = new Recipe(
             1L,
@@ -151,6 +166,7 @@ void testGetAllRecipes() {
             30,
             30,
             500,
+            8,
             2,
             "https://natureta.si/wp-content/uploads/2022/01/polpekoci-ajvar-e1658756496692.png"
     );
@@ -166,6 +182,7 @@ void testGetAllRecipes() {
             30,
             30,
             500,
+            7,
             2,
             "https://natureta.si/wp-content/uploads/2022/01/polpekoci-ajvar-e1658756496692.png"
     );
@@ -183,6 +200,29 @@ void testGetAllRecipes() {
     assertEquals("Jane Doe", result.get(1).getRecipeAuthor());
 }
 @Test
+void testDeleteRecipe_Found() {
+    Recipe recipe = new Recipe(
+            1L,
+            "Ajvar",
+            "Delicious Balkan spread made from roasted red peppers.",
+            "John Doe",
+            "Serbia",
+            "paprika",
+            30,
+            30,
+            30,
+            30,
+            500,
+            2,
+            2,
+            "https://natureta.si/wp-content/uploads/2022/01/polpekoci-ajvar-e1658756496692.png"
+    );
+
+    when(recipeRepository.findById(1L)).thenReturn(Optional.of(recipe));
+
+    assertDoesNotThrow(() -> recipeService.deleteRecipe(1L));
+}
+
 void testDeleteRecipe_NotFound() {
     when(recipeRepository.findById(1L)).thenReturn(java.util.Optional.empty());
 
@@ -207,6 +247,7 @@ void testDeleteRecipe_NotFound() {
                 30,
                 500,
                 2,
+                2,
                 "https://natureta.si/wp-content/uploads/2022/01/polpekoci-ajvar-e1658756496692.png"
         );
 
@@ -222,6 +263,7 @@ void testDeleteRecipe_NotFound() {
                 30,
                 30,
                 500,
+                2,
                 3,
                 "https://natureta.si/wp-content/uploads/2022/01/polpekoci-ajvar-e1658756496692-updated.png"
         );
@@ -238,6 +280,7 @@ void testDeleteRecipe_NotFound() {
                 30,
                 30,
                 500,
+                2,
                 3,
                 "https://natureta.si/wp-content/uploads/2022/01/polpekoci-ajvar-e1658756496692-updated.png"
         );
@@ -269,6 +312,7 @@ void testDeleteRecipe_NotFound() {
                 30,
                 30,
                 500,
+                2,
                 3,
                 "https://natureta.si/wp-content/uploads/2022/01/polpekoci-ajvar-e1658756496692-updated.png"
         );
@@ -297,6 +341,7 @@ void testDeleteRecipe_NotFound() {
                 30,
                 500,
                 2,
+                2,
                 "https://natureta.si/wp-content/uploads/2022/01/polpekoci-ajvar-e1658756496692.png"
         );
     
@@ -324,6 +369,7 @@ void testAdjustIngredientsForFewerServings() {
             30,
             30,
             500,
+            2,
             2,
             "https://natureta.si/wp-content/uploads/2022/01/polpekoci-ajvar-e1658756496692.png"
     );
@@ -369,6 +415,7 @@ void testAdjustIngredientsForZeroOrNegativeServings() {
             30,
             30,
             500,
+            2,
             2,
             "https://natureta.si/wp-content/uploads/2022/01/polpekoci-ajvar-e1658756496692.png"
     );
